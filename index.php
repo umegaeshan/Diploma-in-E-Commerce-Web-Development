@@ -9,7 +9,10 @@
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-	<script src="https://kit.fontawesome.com/03c57d27b5.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="css\style.css">
+
+	<script src="https://kit.fontawesome.com/03c57d27b5.js" crossorigin="anonymous">
+	</script>
 
 
 
@@ -20,7 +23,7 @@
 
 	<!--  CREATE NAV BAR -->
 
-	<nav class="navbar navbar-expand-lg bg-info-subtle">
+	<nav class="navbar navbar-expand-lg bg-dark-subtle">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -56,6 +59,11 @@
 			</div>
 		</div>
 	</nav>
+
+	<!-- ADD BACKGROUN IMAGE -->
+	<div class="background-image">
+		<img src="images\monochrome-beauty-product-skincare.jpg" class="img-fluid " alt="Odora">
+	</div>
 
 
 
