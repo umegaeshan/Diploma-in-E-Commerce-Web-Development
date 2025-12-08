@@ -23,47 +23,76 @@
 
 	<!--  CREATE NAV BAR -->
 
-	<nav class="navbar navbar-expand-lg bg-dark-subtle">
+	<nav class="navbar navbar-expand-lg bg-dark  ">
 		<div class="container-fluid">
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<a class="navbar-brand" href="#"><i class="fa-brands fa-react fa-rotate-90 fa-2xl" style="color: #000000;"></i></a>
-			<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 
-				<ul class="navbar-nav me-auto mb-3 mb-lg-2 fs-4 fw-bold">
+			<a class="navbar-brand" href="#">ODARA</a>
+			<div class="collapse navbar-collapse">
+
+				<ul class="navbar-nav me-auto  fs-4 ">
 					<li class="nav-item">
-						<a class="nav-link active ms-5" aria-current="page" href="/index">Home</a>
+						<a class="nav-link active ms-5  me-5" aria-current="page" href="/index">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link ms-5 me-4" href="/product">Product</a>
+						<a class="nav-link ms-3 me-5" href="/product">Product</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link ms-5 me-4" href="/about">About</a>
+						<a class="nav-link ms-3 me-5" href="/about">About</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link ms-5 me-4" href="/contact">Contact Us</a>
+						<a class="nav-link ms-3 me-5" href="/contact">Contact Us</a>
 					</li>
 
 				</ul>
 				<form class="d-flex me-5" role="search">
 
 					<input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search" />
-					<button class="btn btn-outline-success " type="submit">Search</button>
+					<button type="button" class="btn btn-outline-info">Search</button>
 
 				</form>
 				<div>
-					<button type="button" class="btn btn-success ms-5">Log In</button>
-					<button type="button" class="btn btn-outline-success">Register</button>
+					<button type="button" class="btn btn-info">Log In</button>
+					<button type="button" class="btn btn-outline-warning">Register</button>
 				</div>
 			</div>
 		</div>
 	</nav>
 
 	<!-- ADD BACKGROUN IMAGE -->
-	<div class="background-image">
-		<img src="images\monochrome-beauty-product-skincare.jpg" class="img-fluid " alt="Odora">
+	<div class="background-image w-70 h-70">
+		<img src="images\monochrome-beauty-product-skincare.jpg " class="img-fluid " alt="Odora">
 	</div>
+
+	<center>
+		<div class="more-button ">
+			<button type="button" class="btn btn-outline-info fw-bold fs-5">Show More</button>
+		</div>
+	</center>
+
+	<div class="home-para">
+		<p>
+			<span class="web-name"> Odora </span>brings you a world of timeless elegance<br> through premium fragrances crafted with passion and purity. <br>Discover scents that reflect your personality, elevate your presence,<br> and leave a memorable impression. At Odora, every fragrance is a storyunique,<br> luxurious, and made to inspire confidence in every moment.
+		</p>
+	</div>
+
+	<!-- FEATURE PRODUCTS -->
+
+	<div class="feature-products">
+		<div class="container text-center">
+			<div class="row">
+				<div class="col">
+					Column
+				</div>
+				<div class="col">
+					Column
+				</div>
+				<div class="col">
+					Column
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 
 
