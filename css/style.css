@@ -1,5 +1,6 @@
 body {
   background-color: rgb(43, 42, 42);
+  background-image: url("images\background-with-smoke-blur-effect.jpg");
 }
 
 .navbar-brand {
@@ -11,7 +12,7 @@ body {
 
 .more-button {
   position: absolute;
-  bottom: 50px;
+  bottom: 120px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -44,4 +45,99 @@ body {
 
 .feature-products {
   margin: 50px;
+  z-index: 11;
+}
+
+.feature-product-title {
+  color: rgb(37, 192, 240);
+  text-align: center;
+}
+
+.odora-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 20px;
+  margin-left: 6%;
+}
+
+.odora-grid div {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 40px;
+  backdrop-filter: blur(6px);
+  border-radius: 15px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  height: 400px;
+  width: 400px;
+  transition: transform 0.3s ease;
+}
+
+.odora-grid div:hover {
+  transform: scale(1.1);
+}
+
+/*  PRODUCT PAGE STYLING  */
+
+.odora-product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 10px;
+  margin-top: 50px;
+  margin-left: 6%;
+  height: 200px;
+}
+
+.odora-product-grid .col img {
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+}
+
+.odora-product-grid .col img:hover {
+  opacity: 0.6;
+  transform: scale(1.1);
+}
+
+.filter {
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+  background-color: rgb(56, 56, 56);
+}
+
+.filter-para {
+  color: rgb(0, 0, 0);
+  background-color: rgb(20, 255, 91);
+  font-weight: bold;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.product-button .btn {
+  position: absolute;
+  margin-top: -3%;
+  margin-left: 8%;
+  transition: transform 0.3s ease;
+  background-color: chartreuse;
+  color: black;
+  font-weight: bolder;
+}
+
+.product-button .btn:hover {
+  transform: scale(1.5);
+  background-color: rgb(255, 217, 0);
+  color: black;
+  font-weight: bolder;
+}
+
+.product-details {
+  position: absolute;
+  background-color: #fff;
+  display: flex;
 }

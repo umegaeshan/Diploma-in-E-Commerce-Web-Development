@@ -26,21 +26,21 @@
 	<nav class="navbar navbar-expand-lg bg-dark  ">
 		<div class="container-fluid">
 
-			<a class="navbar-brand" href="#">ODARA</a>
+			<a class="navbar-brand" href="index.php">ODARA</a>
 			<div class="collapse navbar-collapse">
 
 				<ul class="navbar-nav me-auto  fs-4 ">
 					<li class="nav-item">
-						<a class="nav-link active ms-5  me-5" aria-current="page" href="/index">Home</a>
+						<a class="nav-link active ms-5  me-5" href="index.php">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link ms-3 me-5" href="/product">Product</a>
+						<a class="nav-link ms-3 me-5" href="product.php">Product</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link ms-3 me-5" href="/about">About</a>
+						<a class="nav-link ms-3 me-5" href="about.php">About</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link ms-3 me-5" href="/contact">Contact Us</a>
+						<a class="nav-link ms-3 me-5" href="contact.php">Contact Us</a>
 					</li>
 
 				</ul>
@@ -65,7 +65,7 @@
 
 	<center>
 		<div class="more-button ">
-			<button type="button" class="btn btn-outline-info fw-bold fs-5">Show More</button>
+			<button href="#feature-products-section" type="button" class="btn btn-outline-info fw-bold fs-5">Show More</button>
 		</div>
 	</center>
 
@@ -76,22 +76,27 @@
 	</div>
 
 	<!-- FEATURE PRODUCTS -->
+	<section id="feature-products-section">
+		<div class="feature-products">
+			<h1 class="feature-product-title">Feature Products </h1>
 
-	<div class="feature-products">
-		<div class="container text-center">
-			<div class="row">
-				<div class="col">
-					Column
+			<div class="odora-grid">
+				<div class="col item1">
+					<img src="images\Fragrance-Notes-1024x683.jpg  " width="375px" height="375px">MEN
 				</div>
-				<div class="col">
-					Column
+				<div class="col item2">
+					<img src="images\women sents.avif" width="375px" height="375px">WOMEN
 				</div>
-				<div class="col">
-					Column
+				<div class="col item3">
+					<img src="images\babies sents.jpeg" width="375px" height="375px">BABIES
 				</div>
 			</div>
+
+
 		</div>
-	</div>
+	</section>
+
+
 
 
 
