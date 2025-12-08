@@ -112,6 +112,10 @@
             </div>
             <div class="col item2">
                 <img src="images\women sents.avif" width="375px" height="375px">
+                <div class="product-details">
+                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="our"> Our Price :$ 19.99 </div>
+                </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
                 </div>
@@ -119,6 +123,10 @@
             </div>
             <div class="col item3">
                 <img src="images\babies sents.jpeg" width="375px" height="375px">
+                <div class="product-details">
+                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="our"> Our Price :$ 19.99 </div>
+                </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
                 </div>
@@ -126,6 +134,10 @@
 
             <div class="col item1">
                 <img src="images\Fragrance-Notes-1024x683.jpg  " width="375px" height="375px">
+                <div class="product-details">
+                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="our"> Our Price :$ 19.99 </div>
+                </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
                 </div>
@@ -133,6 +145,10 @@
 
             <div class="col item2">
                 <img src="images\women sents.avif" width="375px" height="375px">
+                <div class="product-details">
+                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="our"> Our Price :$ 19.99 </div>
+                </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
                 </div>
@@ -141,8 +157,8 @@
             <div class="col item3">
                 <img src="images\babies sents.jpeg" width="375px" height="375px">
                 <div class="product-details">
-                    <span class="list"> List Price :$ 23.21 </span>
-                    <span class="our"> Our Price :$ 19.99 </span>
+                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
@@ -151,6 +167,10 @@
 
             <div class="col item1">
                 <img src="images\Fragrance-Notes-1024x683.jpg  " width="375px" height="375px">
+                <div class="product-details">
+                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="our"> Our Price :$ 19.99 </div>
+                </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
                 </div>
@@ -158,6 +178,10 @@
 
             <div class="col item2">
                 <img src="images\women sents.avif" width="375px" height="375px">
+                <div class="product-details">
+                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="our"> Our Price :$ 19.99 </div>
+                </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
                 </div>
@@ -165,6 +189,10 @@
 
             <div class="col item3">
                 <img src="images\babies sents.jpeg" width="375px" height="375px">
+                <div class="product-details">
+                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="our"> Our Price :$ 19.99 </div>
+                </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
                 </div>
