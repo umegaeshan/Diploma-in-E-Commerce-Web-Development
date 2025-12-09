@@ -7,46 +7,47 @@
 
     <title>Bootstrap demo</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css/style.css">
 
-    <script src="https://kit.fontawesome.com/03c57d27b5.js" crossorigin="anonymous">
-    </script>
-
-
+    <script src="https://kit.fontawesome.com/03c57d27b5.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
 
+    <!-- NAVIGATION BAR -->
 
-    <!--  CREATE NAV BAR -->
-
-    <nav class="navbar navbar-expand-lg bg-dark  ">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
 
             <a class="navbar-brand" href="#">ODARA</a>
-            <div class="collapse navbar-collapse">
 
-                <ul class="navbar-nav me-auto  fs-4 ">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarProductContent" aria-controls="navbarProductContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarProductContent">
+
+                <ul class="navbar-nav me-auto fs-4">
                     <li class="nav-item">
-                        <a class="nav-link active ms-5  me-5" aria-current="page" href="/index">Home</a>
+                        <a class="nav-link active ms-5 me-5" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ms-3 me-5" href="/product">Product</a>
+                        <a class="nav-link ms-3 me-5" href="product.php">Product</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ms-3 me-5" href="/about">About</a>
+                        <a class="nav-link ms-3 me-5" href="about.php">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ms-3 me-5" href="/contact">Contact Us</a>
+                        <a class="nav-link ms-3 me-5" href="contact.php">Contact Us</a>
                     </li>
 
                 </ul>
                 <form class="d-flex me-5" role="search">
 
-                    <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search" />
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                     <button type="button" class="btn btn-outline-info">Search</button>
 
                 </form>
@@ -58,12 +59,11 @@
         </div>
     </nav>
 
+    <!-- FILTER SYSTEM -->
 
     <div class="filter">
 
         <div class="filter-para"> Filter Items </div>
-
-        <!-- FILTER USING CATAGORY -->
 
         <div class="dropdown-catagory">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,8 +76,6 @@
                 <li><a class="dropdown-item" href="#">Moms & Babies</a></li>
             </ul>
         </div>
-
-        <!-- Sort By Prices-->
 
         <div class="sort-prices">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -93,108 +91,142 @@
     </div>
 
 
-
-
-    <!-- Product Grid -->
+    <!--  PRODUCT GRID  -->
 
     <div class="products">
         <div class="odora-product-grid">
             <div class="col item1">
-                <img src="images\Fragrance-Notes-1024x683.jpg  " width="375px" height="375px">
+                <img src="images/Fragrance-Notes-1024x683.jpg" width="275px" height="275px">
                 <div class="product-details">
+                    <div class="name">Fuck </div>
                     <div class="list"> List Price :$ 23.21 </div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
                 </div>
-
+                <div class="product-offer-button">
+                    <button type="button" class="btn btn-outline-danger">5% OFF</button>
+                </div>
             </div>
+
             <div class="col item2">
-                <img src="images\women sents.avif" width="375px" height="375px">
+                <img src="images/women sents.avif" width="275px" height="275px">
                 <div class="product-details">
+                    <div class="name">Fuck </div>
                     <div class="list"> List Price :$ 23.21 </div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
                 </div>
-
+                <div class="product-offer-button">
+                    <button type="button" class="btn btn-outline-danger">5% OFF</button>
+                </div>
             </div>
+
             <div class="col item3">
-                <img src="images\babies sents.jpeg" width="375px" height="375px">
+                <img src="images/babies sents.jpeg" width="275px" height="275px">
                 <div class="product-details">
+                    <div class="name">Fuck </div>
                     <div class="list"> List Price :$ 23.21 </div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
+                </div>
+                <div class="product-offer-button">
+                    <button type="button" class="btn btn-outline-danger">5% OFF</button>
                 </div>
             </div>
 
             <div class="col item1">
-                <img src="images\Fragrance-Notes-1024x683.jpg  " width="375px" height="375px">
+                <img src="images/Fragrance-Notes-1024x683.jpg" width="275px" height="275px">
                 <div class="product-details">
+                    <div class="name">Fuck </div>
                     <div class="list"> List Price :$ 23.21 </div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
+                </div>
+                <div class="product-offer-button">
+                    <button type="button" class="btn btn-outline-danger">5% OFF</button>
                 </div>
             </div>
 
             <div class="col item2">
-                <img src="images\women sents.avif" width="375px" height="375px">
+                <img src="images/women sents.avif" width="275px" height="275px">
                 <div class="product-details">
+                    <div class="name">Fuck </div>
                     <div class="list"> List Price :$ 23.21 </div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
+                </div>
+                <div class="product-offer-button">
+                    <button type="button" class="btn btn-outline-danger">5% OFF</button>
                 </div>
             </div>
 
             <div class="col item3">
-                <img src="images\babies sents.jpeg" width="375px" height="375px">
+                <img src="images/babies sents.jpeg" width="275px" height="275px">
                 <div class="product-details">
+                    <div class="name">Fuck </div>
                     <div class="list"> List Price :$ 23.21 </div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
+                </div>
+                <div class="product-offer-button">
+                    <button type="button" class="btn btn-outline-danger">5% OFF</button>
                 </div>
             </div>
 
             <div class="col item1">
-                <img src="images\Fragrance-Notes-1024x683.jpg  " width="375px" height="375px">
+                <img src="images/Fragrance-Notes-1024x683.jpg" width="275px" height="275px">
                 <div class="product-details">
+                    <div class="name">Fuck </div>
                     <div class="list"> List Price :$ 23.21 </div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
+                </div>
+                <div class="product-offer-button">
+                    <button type="button" class="btn btn-outline-danger">5% OFF</button>
                 </div>
             </div>
 
             <div class="col item2">
-                <img src="images\women sents.avif" width="375px" height="375px">
+                <img src="images/women sents.avif" width="275px" height="275px">
                 <div class="product-details">
+                    <div class="name">Fuck </div>
                     <div class="list"> List Price :$ 23.21 </div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
+                </div>
+                <div class="product-offer-button">
+                    <button type="button" class="btn btn-outline-danger">5% OFF</button>
                 </div>
             </div>
 
             <div class="col item3">
-                <img src="images\babies sents.jpeg" width="375px" height="375px">
+                <img src="images/babies sents.jpeg" width="275px" height="275px">
                 <div class="product-details">
+                    <div class="name">Fuck </div>
                     <div class="list"> List Price :$ 23.21 </div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
                     <button type="button" class="btn btn-success">Details</button>
+                </div>
+                <div class="product-offer-button">
+                    <button type="button" class="btn btn-outline-danger">5% OFF</button>
                 </div>
             </div>
 
@@ -204,38 +236,7 @@
     </div>
     </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 
 </body>

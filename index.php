@@ -7,31 +7,35 @@
 
 	<title>Bootstrap demo</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-	<link rel="stylesheet" href="css\style.css">
+	<link rel="stylesheet" href="css/style.css">
 
-	<script src="https://kit.fontawesome.com/03c57d27b5.js" crossorigin="anonymous">
-	</script>
-
-
+	<script src="https://kit.fontawesome.com/03c57d27b5.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
 
+	<div class="loading-animation">
+		<div class="loader"></div>
+	</div>
 
-	<!--  CREATE NAV BAR -->
 
-	<nav class="navbar navbar-expand-lg bg-dark  ">
+	<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
 		<div class="container-fluid">
 
 			<a class="navbar-brand" href="index.php">ODARA</a>
-			<div class="collapse navbar-collapse">
 
-				<ul class="navbar-nav me-auto  fs-4 ">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarContent">
+
+				<ul class="navbar-nav me-auto fs-4">
 					<li class="nav-item">
-						<a class="nav-link active ms-5  me-5" href="index.php">Home</a>
+						<a class="nav-link active ms-5 me-5" aria-current="page" href="index.php">Home</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link ms-3 me-5" href="product.php">Product</a>
@@ -46,7 +50,7 @@
 				</ul>
 				<form class="d-flex me-5" role="search">
 
-					<input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search" />
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
 					<button type="button" class="btn btn-outline-info">Search</button>
 
 				</form>
@@ -58,16 +62,14 @@
 		</div>
 	</nav>
 
-	<!-- ADD BACKGROUN IMAGE -->
-	<div class="background-image w-70 h-70">
-		<img src="images\monochrome-beauty-product-skincare.jpg " class="img-fluid " alt="Odora">
+	<div class="background-image">
+		<img src="images/monochrome-beauty-product-skincare.jpg" class="img-fluid" alt="Odora">
 	</div>
 
-	<center>
-		<div class="more-button ">
-			<button href="#feature-products-section" type="button" class="btn btn-outline-info fw-bold fs-5">Show More</button>
-		</div>
-	</center>
+	<div class="more-button">
+		<a href="#feature-products-section" role="button" class="btn btn-outline-info fw-bold fs-5">Show More</a>
+	</div>
+
 
 	<div class="home-para">
 		<p>
@@ -75,20 +77,19 @@
 		</p>
 	</div>
 
-	<!-- FEATURE PRODUCTS -->
 	<section id="feature-products-section">
 		<div class="feature-products">
-			<h1 class="feature-product-title">Feature Products </h1>
+			<h1 class="feature-product-title">Feature Products</h1>
 
 			<div class="odora-grid">
-				<div class="col item1">
-					<img src="images\Fragrance-Notes-1024x683.jpg  " width="375px" height="375px">MEN
+				<div class="item1">
+					<img src="images/Fragrance-Notes-1024x683.jpg" width="375px" height="375px">MEN
 				</div>
-				<div class="col item2">
-					<img src="images\women sents.avif" width="375px" height="375px">WOMEN
+				<div class="item2">
+					<img src="images/women sents.avif" width="375px" height="375px">WOMEN
 				</div>
-				<div class="col item3">
-					<img src="images\babies sents.jpeg" width="375px" height="375px">BABIES
+				<div class="item3">
+					<img src="images/babies sents.jpeg" width="375px" height="375px">BABIES
 				</div>
 			</div>
 
@@ -96,37 +97,7 @@
 		</div>
 	</section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 
 </body>

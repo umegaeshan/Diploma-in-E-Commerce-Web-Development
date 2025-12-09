@@ -31,16 +31,16 @@
 
                 <ul class="navbar-nav me-auto  fs-4 ">
                     <li class="nav-item">
-                        <a class="nav-link active ms-5  me-5" aria-current="page" href="/index">Home</a>
+                        <a class="nav-link active ms-5  me-5" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ms-3 me-5" href="/product">Product</a>
+                        <a class="nav-link ms-3 me-5" href="product.php">Product</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ms-3 me-5" href="/about">About</a>
+                        <a class="nav-link ms-3 me-5" href="about.php">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ms-3 me-5" href="/contact">Contact Us</a>
+                        <a class="nav-link ms-3 me-5" href="contact.php">Contact Us</a>
                     </li>
 
                 </ul>
