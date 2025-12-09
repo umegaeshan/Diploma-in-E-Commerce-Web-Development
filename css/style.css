@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(43, 42, 42);
+  background-color: rgb(7, 4, 29);
   background-image: url("images\background-with-smoke-blur-effect.jpg");
 }
 
@@ -156,9 +156,15 @@ body {
   margin-top: -3%;
   margin-left: 21%;
   transition: transform 0.3s ease;
-
+  font-weight: bolder;
   color: black;
   font-weight: bolder;
+}
+
+i {
+  position: absolute;
+  margin-top: -14%;
+  margin-left: 24%;
 }
 
 /*  PRODUCT PRICE DETAILS */
@@ -173,11 +179,29 @@ body {
 }
 
 .odora-product-grid .col:hover .product-details {
-  background-color: black;
+  background-color: rgb(61, 61, 61);
   border-radius: 20px;
   padding: 10px;
 }
 
 .list {
   color: rgb(248, 75, 75);
+}
+
+.list .list-price {
+  text-decoration: line-through;
+}
+
+/*  FOOTER STYLING  */
+
+.footer {
+  background-color: #717171;
+}
+.container {
+  padding: 50px;
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 2fr;
+  grid-gap: 2rem;
 }

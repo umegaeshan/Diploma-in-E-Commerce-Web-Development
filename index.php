@@ -54,6 +54,7 @@
 					<button type="button" class="btn btn-outline-info">Search</button>
 
 				</form>
+
 				<div>
 					<button type="button" class="btn btn-info">Log In</button>
 					<button type="button" class="btn btn-outline-warning">Register</button>
@@ -98,6 +99,17 @@
 	</section>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="A">Lorem ipsum dolor sit amet consectetur.</div>
+			<div class="A">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta minima quas, ut cum exercitationem commodi! Nobis ratione perferendis inventore quam.</div>
+			<div class="A">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus quisquam nemo facilis harum vel!</div>
+			<div class="A">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, nisi.</div>
+		</div>
+	</footer>
+
+
 
 
 </body>

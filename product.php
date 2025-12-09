@@ -99,7 +99,7 @@
                 <img src="images/Fragrance-Notes-1024x683.jpg" width="275px" height="275px">
                 <div class="product-details">
                     <div class="name">Fuck </div>
-                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="list"> List Price :<span class="list-price"> $23.21</span> </div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
@@ -107,6 +107,10 @@
                 </div>
                 <div class="product-offer-button">
                     <button type="button" class="btn btn-outline-danger">5% OFF</button>
+                </div>
+                <div class="fav-button">
+                    <i class="fa-regular fa-heart fa-lg" style="color: #fe1621;"></i>
+                    <!-- <i class="fa-solid fa-heart fa-lg" style="color: #fe1621;"></i> -->
                 </div>
             </div>
 
@@ -114,7 +118,7 @@
                 <img src="images/women sents.avif" width="275px" height="275px">
                 <div class="product-details">
                     <div class="name">Fuck </div>
-                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="list"> List Price :<span class="list-price"> $23.21</span></div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
@@ -122,6 +126,10 @@
                 </div>
                 <div class="product-offer-button">
                     <button type="button" class="btn btn-outline-danger">5% OFF</button>
+                </div>
+                <div class="fav-button">
+                    <i class="fa-regular fa-heart fa-lg" style="color: #fe1621;"></i>
+                    <!-- <i class="fa-solid fa-heart fa-lg" style="color: #fe1621;"></i> -->
                 </div>
             </div>
 
@@ -129,7 +137,7 @@
                 <img src="images/babies sents.jpeg" width="275px" height="275px">
                 <div class="product-details">
                     <div class="name">Fuck </div>
-                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="list"> List Price :<span class="list-price"> $23.21</span> </div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
@@ -137,6 +145,10 @@
                 </div>
                 <div class="product-offer-button">
                     <button type="button" class="btn btn-outline-danger">5% OFF</button>
+                </div>
+                <div class="fav-button">
+                    <i class="fa-regular fa-heart fa-lg" style="color: #fe1621;"></i>
+                    <!-- <i class="fa-solid fa-heart fa-lg" style="color: #fe1621;"></i> -->
                 </div>
             </div>
 
@@ -144,7 +156,7 @@
                 <img src="images/Fragrance-Notes-1024x683.jpg" width="275px" height="275px">
                 <div class="product-details">
                     <div class="name">Fuck </div>
-                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="list"> List Price :<span class="list-price"> $23.21</span></div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
@@ -152,6 +164,10 @@
                 </div>
                 <div class="product-offer-button">
                     <button type="button" class="btn btn-outline-danger">5% OFF</button>
+                </div>
+                <div class="fav-button">
+                    <i class="fa-regular fa-heart fa-lg" style="color: #fe1621;"></i>
+                    <!-- <i class="fa-solid fa-heart fa-lg" style="color: #fe1621;"></i> -->
                 </div>
             </div>
 
@@ -159,7 +175,7 @@
                 <img src="images/women sents.avif" width="275px" height="275px">
                 <div class="product-details">
                     <div class="name">Fuck </div>
-                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="list"> List Price :<span class="list-price"> $23.21</span></div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
@@ -167,6 +183,10 @@
                 </div>
                 <div class="product-offer-button">
                     <button type="button" class="btn btn-outline-danger">5% OFF</button>
+                </div>
+                <div class="fav-button">
+                    <i class="fa-regular fa-heart fa-lg" style="color: #fe1621;"></i>
+                    <!-- <i class="fa-solid fa-heart fa-lg" style="color: #fe1621;"></i> -->
                 </div>
             </div>
 
@@ -174,7 +194,7 @@
                 <img src="images/babies sents.jpeg" width="275px" height="275px">
                 <div class="product-details">
                     <div class="name">Fuck </div>
-                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="list"> List Price :<span class="list-price"> $23.21</span></div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
@@ -182,6 +202,10 @@
                 </div>
                 <div class="product-offer-button">
                     <button type="button" class="btn btn-outline-danger">5% OFF</button>
+                </div>
+                <div class="fav-button">
+                    <i class="fa-regular fa-heart fa-lg" style="color: #fe1621;"></i>
+                    <!-- <i class="fa-solid fa-heart fa-lg" style="color: #fe1621;"></i> -->
                 </div>
             </div>
 
@@ -189,7 +213,7 @@
                 <img src="images/Fragrance-Notes-1024x683.jpg" width="275px" height="275px">
                 <div class="product-details">
                     <div class="name">Fuck </div>
-                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="list"> List Price :<span class="list-price"> $23.21</span></div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
@@ -197,6 +221,10 @@
                 </div>
                 <div class="product-offer-button">
                     <button type="button" class="btn btn-outline-danger">5% OFF</button>
+                </div>
+                <div class="fav-button">
+                    <i class="fa-regular fa-heart fa-lg" style="color: #fe1621;"></i>
+                    <!-- <i class="fa-solid fa-heart fa-lg" style="color: #fe1621;"></i> -->
                 </div>
             </div>
 
@@ -204,7 +232,7 @@
                 <img src="images/women sents.avif" width="275px" height="275px">
                 <div class="product-details">
                     <div class="name">Fuck </div>
-                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="list"> List Price :<span class="list-price"> $23.21</span> </div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
@@ -212,6 +240,10 @@
                 </div>
                 <div class="product-offer-button">
                     <button type="button" class="btn btn-outline-danger">5% OFF</button>
+                </div>
+                <div class="fav-button">
+                    <i class="fa-regular fa-heart fa-lg" style="color: #fe1621;"></i>
+                    <!-- <i class="fa-solid fa-heart fa-lg" style="color: #fe1621;"></i> -->
                 </div>
             </div>
 
@@ -219,7 +251,7 @@
                 <img src="images/babies sents.jpeg" width="275px" height="275px">
                 <div class="product-details">
                     <div class="name">Fuck </div>
-                    <div class="list"> List Price :$ 23.21 </div>
+                    <div class="list"> List Price :<span class="list-price"> $23.21</span> </div>
                     <div class="our"> Our Price :$ 19.99 </div>
                 </div>
                 <div class="product-button">
@@ -227,6 +259,10 @@
                 </div>
                 <div class="product-offer-button">
                     <button type="button" class="btn btn-outline-danger">5% OFF</button>
+                </div>
+                <div class="fav-button">
+                    <i class="fa-regular fa-heart fa-lg" style="color: #fe1621;"></i>
+                    <!-- <i class="fa-solid fa-heart fa-lg" style="color: #fe1621;"></i> -->
                 </div>
             </div>
 
