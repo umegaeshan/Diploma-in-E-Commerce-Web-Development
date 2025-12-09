@@ -205,3 +205,8 @@ i {
   grid-template-rows: 1fr 2fr;
   grid-gap: 2rem;
 }
+
+.footer-product {
+  position: absolute;
+  margin-bottom: 0%;
+}

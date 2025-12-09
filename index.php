@@ -98,7 +98,8 @@
 		</div>
 	</section>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
 
 	<footer class="footer">
 		<div class="container">
@@ -109,6 +110,24 @@
 		</div>
 	</footer>
 
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+	<?php
+
+
+	include 'details-modal-O3-FREEDOM.php';
+	include 'details-modal-Adidas.php';
+	include 'details-modal-Black-Knight.php';
+	include 'details-modal-Brut-Original.php';
+	include 'details-modal-Voodoo.php';
+	include 'details-modal-Fuck.php';
+	include 'details-modal-Paco-Rabanne.php';
+	include 'details-modal-OPTIMUM-COLOGNE.php';
+	include 'details-modal-Giorgio-Ara.php';
+
+	?>
 
 
 
