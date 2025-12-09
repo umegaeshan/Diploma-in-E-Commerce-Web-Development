@@ -1,3 +1,6 @@
+<?php require_once 'core/init.php' ?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -56,8 +59,8 @@
 				</form>
 
 				<div>
-					<button type="button" class="btn btn-info">Log In</button>
-					<button type="button" class="btn btn-outline-warning">Register</button>
+					<a href="login.php" class="btn btn-info" role="button">Log In</a>
+					<a href="register.php" class="btn btn-outline-warning">Register</a>
 				</div>
 			</div>
 		</div>
@@ -114,20 +117,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 
-	<?php
 
-
-	include 'details-modal-O3-FREEDOM.php';
-	include 'details-modal-Adidas.php';
-	include 'details-modal-Black-Knight.php';
-	include 'details-modal-Brut-Original.php';
-	include 'details-modal-Voodoo.php';
-	include 'details-modal-Fuck.php';
-	include 'details-modal-Paco-Rabanne.php';
-	include 'details-modal-OPTIMUM-COLOGNE.php';
-	include 'details-modal-Giorgio-Ara.php';
-
-	?>
 
 
 

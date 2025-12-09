@@ -210,3 +210,10 @@ i {
   position: absolute;
   margin-bottom: 0%;
 }
+
+/* REGISTER PAGE  */
+
+.register-form {
+  background-color: #717171;
+  z-index: 200;
+}

@@ -99,59 +99,55 @@
             <!-- PRODUCT 1 -->
 
             <div class="col item1">
-                <img src="images\03 freedom.webp" width="275px" height="275px">
+                <img src="images/03 freedom.webp" width="275px" height="275px">
+
                 <div class="product-details">
-                    <div class="name">O3 FREEDOM
-                    </div>
-                    <div class="list"> List Price :<span class="list-price"> $23.21</span> </div>
-                    <div class="our"> Our Price :$ 2,25.00</div>
+                    <div class="name">O3 FREEDOM</div>
+                    <div class="list">List Price: <span class="list-price">$23.21</span></div>
+                    <div class="our">Our Price: $225.00</div>
                 </div>
+
                 <div class="product-button">
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#detailsModal_1">Details</button>
+                </div>
 
-                    <!-- MODDEL -->
+                <!-- MODAL -->
+                <div class="modal fade p-5" id="detailsModal_1" tabindex="-1" aria-labelledby="detailsModalLabel_1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
 
-                    <div class="modal fade p-5" id="detailsModal_1" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
-
-                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                            <div class="modal-content">
-
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="detailsModalLabel">Adidas Details</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-
-                                <div class="modal-body">
-                                    <p>
-                                        <img src="images\03 freedom.webp" width="275px" height="275px">
-                                    <h2>O3 FREEDOM COLOGNE SPRAY 100ml</h2>
-                                    <hr>
-                                    <h3>Description</h3>
-                                    Vibrant, fruity, and full of energy, Freedom takes the concept and runs with it. A flexible fragrance that can be worn day-in and day-out, all crafted using internationally acclaimed scent accords.</p>
-                                    <br>
-                                    <p>
-                                        Rs2,250.00
-                                    </p>
-                                    <hr>
-
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-right: 148px; position:absolute; margin-bottom:45px;">Close</button>
-                                    <button type="button" class="btn btn-primary mb-5 ">Add to Cart</button>
-                                </div>
-
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="detailsModalLabel_1">O3 Freedom Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
+
+                            <div class="modal-body">
+                                <img src="images/03 freedom.webp" width="275" height="275">
+                                <h2>O3 Freedom Cologne Spray 100ml</h2>
+                                <hr>
+                                <h3>Description</h3>
+                                <p>
+                                    Vibrant, fruity, and full of energy. A flexible fragrance crafted using internationally acclaimed scent accords.
+                                </p>
+                                <p>Price: Rs 2,250.00</p>
+                                <hr>
+                            </div>
+
+                            <div class="modal-footer">
+                                <a href="login.php" class="btn btn-info" role="button">Log In</a>
+                                <a href="register.php" class="btn btn-outline-warning">Register</a>
+                            </div>
+
                         </div>
                     </div>
-
                 </div>
+
                 <div class="product-offer-button">
                     <button type="button" class="btn btn-outline-danger">5% OFF</button>
                 </div>
+
                 <div class="fav-button">
-                    <i class="fa-regular fa-heart fa-lg" style="color: #fe1621;"></i>
-                    <!-- <i class="fa-solid fa-heart fa-lg" style="color: #fe1621;"></i> -->
+                    <i class="fa-regular fa-heart fa-lg" style="color:#fe1621;"></i>
                 </div>
             </div>
 
