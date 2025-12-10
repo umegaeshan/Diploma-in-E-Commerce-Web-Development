@@ -59,7 +59,10 @@
     </nav>
 
 
+    <div class="about-body">
 
+
+    </div>
 
 
 

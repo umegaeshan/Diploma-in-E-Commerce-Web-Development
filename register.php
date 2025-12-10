@@ -1,5 +1,31 @@
 <?php require_once 'core/init.php' ?>
 
+<?php
+
+if (isset($_POST['register-button'])) {
+
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $address = $_POST['address'];
+    $mobile_no = $_POST['mobile_no'];
+    $role = 'user';
+
+    $sql = " INSERT INTO users(username,email,password,address,mobile_no,role)VALUES
+            ('$username','$email','$password','$address','$mobile_no','$role')";
+
+    $resalt = mysqli_query($conn, $sql);
+
+    if (!$resalt) {
+        echo "Error !!: {$conn->error}";
+    } else {
+        echo "Registration Successfully ! ";
+    }
+}
+
+
+?>
+
 
 <!doctype html>
 <html lang="en">
@@ -12,7 +38,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="log-register.css">
+    <link rel="stylesheet" href="log-registers.css">
 
     <script src="https://kit.fontawesome.com/03c57d27b5.js" crossorigin="anonymous"></script>
 
@@ -21,7 +47,7 @@
 
 <style>
     .container {
-        background-color: darkgray;
+        background-color: white;
         border-radius: 30px;
         box-shadow: 2px 2px 40px 20px;
     }
@@ -68,35 +94,36 @@
 
     <div class="container">
         <div class="odora-grid">
+
             <div class="item1">
                 <img src="images/Fragrance-Notes-1024x683.jpg" width="375px" height="375px"></img>
             </div>
             <div class="item2">
-                <form>
+                <form method="post">
+                    <div class="mb-4">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
                     <div class="mb-4">
                         <label for="Email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="Email" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" name="email">
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-4">
                         <label for="Password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="Password">
+                        <input type="password" class="form-control" id="password" name="password">
                     </div>
                     <div class="mb-4">
                         <label for="address" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="address">
+                        <input type="text" class="form-control" id="address" name="address">
                     </div>
                     <div class="mb-4">
                         <label for="mobile-no" class="form-label">Mobile No</label>
-                        <input type="text" class="form-control" id="mobile-no">
+                        <input type="text" class="form-control" id="mobile-no" name="mobile_no">
                     </div>
 
-                    <div class="mb-4 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
                     <center>
-                        <a href="login.php" class="btn btn-primary">Register Now </a><br>
+                        <button name="register-button" class="btn btn-primary">Register Now </button><br>
                         <a class="have-account" href="login.php"> Alrady have account ? </a>
                     </center>
 

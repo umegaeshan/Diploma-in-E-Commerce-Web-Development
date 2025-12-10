@@ -12,7 +12,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="log-register.css">
+    <link rel="stylesheet" href="log-registers.css">
 
     <script src="https://kit.fontawesome.com/03c57d27b5.js" crossorigin="anonymous"></script>
 
@@ -21,7 +21,7 @@
 
 <style>
     .container {
-        background-color: gray;
+        background-color: white;
         border-radius: 30px;
         box-shadow: 2px 2px 40px 20px;
     }
@@ -73,10 +73,9 @@
             </div>
             <div class="item2">
                 <form>
-                    <div class="mb-5">
-                        <label for="Email" class="form-label">Email address</label>
-                        <input type="email" class="form-control p-3" id="Email" aria-describedby="emailHelp">
-
+                    <div class="mb-4">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username">
                     </div>
                     <div class="mb-5">
                         <label for="Password" class="form-label">Password</label>
