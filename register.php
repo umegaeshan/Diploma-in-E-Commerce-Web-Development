@@ -19,7 +19,7 @@ if (isset($_POST['register-button'])) {
     if (!$resalt) {
         echo "Error !!: {$conn->error}";
     } else {
-        echo "Registration Successfully ! ";
+        echo "<center> <h3 style= 'color:green'; 'font-weight:bolder'; > Registration Successfully !</h3> </center> ";
     }
 }
 
@@ -53,7 +53,7 @@ if (isset($_POST['register-button'])) {
     }
 
     .odora-grid {
-        margin-top: 10%;
+        margin-top: 5%;
         display: flex;
         justify-content: center;
         align-items: center;

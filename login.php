@@ -1,4 +1,46 @@
-<?php require_once 'core/init.php' ?>
+<?php
+
+require_once 'core/init.php';
+?>
+
+<?php
+session_start();
+if (isset($_POST['login-button'])) {
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $sql = "SELECT * FROM users WHERE email ='$email' ";
+
+    $result = mysqli_query($conn, $sql);
+
+    if ($result->num_rows > 0) {
+
+        $row = mysqli_fetch_assoc($result);
+
+        if ($row['password'] == $password) {
+            echo "<center> <h2 style= color:green; font-weight:bolder ; > Login Successfully ! </h2></center> ";
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_name'] = $row['username'];
+            $_SESSION['user_role'] = $row['role'];
+
+            if ($_SESSION['user_role'] == "admin") {
+                header("Location : admin_dashbord.php");
+            } else {
+                header("Location:index.php");
+            }
+        } else {
+            echo "<center> <h2 style= color:red; font-weight:bolder ; > Wrong Password ! </h2></center> ";
+        }
+    } else {
+        echo "<center> <h2 style= color:red; font-weight:bolder ; > You'r Not Registed ! </h2></center>";
+    }
+}
+
+
+
+
+?>
 
 
 <!doctype html>
@@ -27,7 +69,7 @@
     }
 
     .odora-grid {
-        margin-top: 10%;
+        margin-top: 7%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -72,18 +114,18 @@
                 <img src="images\women sents.avif" width="375px" height="375px"></img>
             </div>
             <div class="item2">
-                <form>
+                <form action="" method="post">
                     <div class="mb-4">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email">
                     </div>
                     <div class="mb-5">
                         <label for="Password" class="form-label">Password</label>
-                        <input type="password" class="form-control p-3" id="Password">
+                        <input type="password" class="form-control p-3" id="Password" name="password">
                     </div>
 
                     <center>
-                        <a href="index.php" class="btn btn-primary">Log In Now</a><br>
+                        <button name="login-button" class="btn btn-primary">Log In Now</button><br>
                         <a class="have-account" href="register.php"> Alrady have't account ? </a>
                     </center>
 
