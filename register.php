@@ -18,42 +18,86 @@
 
 </head>
 
+
+<style>
+    .container {
+        background-color: darkgray;
+        border-radius: 30px;
+        box-shadow: 2px 2px 40px 20px;
+    }
+
+    .odora-grid {
+        margin-top: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+    }
+
+    img {
+        height: 700px;
+        width: 600px;
+    }
+
+    .item2 {
+        width: 40%;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+    .have-account {
+        color: red;
+        padding: 3%;
+    }
+
+    .btn:hover {
+        background-color: yellow;
+        color: black;
+    }
+
+    input {
+        border-radius: 20px;
+    }
+</style>
+
+
+
 <body>
 
     <div class="container">
         <div class="odora-grid">
             <div class="item1">
-                <img src="images/Fragrance-Notes-1024x683.jpg" width="375px" height="375px">MEN
+                <img src="images/Fragrance-Notes-1024x683.jpg" width="375px" height="375px"></img>
             </div>
             <div class="item2">
                 <form>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div class="mb-4">
+                        <label for="Email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="Email" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    <div class="mb-4">
+                        <label for="Password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="Password">
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    <div class="mb-4">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address">
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    <div class="mb-4">
+                        <label for="mobile-no" class="form-label">Mobile No</label>
+                        <input type="text" class="form-control" id="mobile-no">
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-                    <div class="mb-3 form-check">
+
+                    <div class="mb-4 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div>
                     <center>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="login.php" class="btn btn-primary">Register Now </a><br>
+                        <a class="have-account" href="login.php"> Alrady have account ? </a>
                     </center>
 
                 </form>

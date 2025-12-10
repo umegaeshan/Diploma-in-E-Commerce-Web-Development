@@ -52,8 +52,8 @@
 
                 </form>
                 <div>
-                    <button type="button" class="btn btn-info">Log In</button>
-                    <button type="button" class="btn btn-outline-warning">Register</button>
+                    <a href="login.php" class="btn btn-info">Log In</a>
+                    <a href="register.php" class="btn btn-outline-warning">Register</a>
                 </div>
             </div>
         </div>
