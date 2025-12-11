@@ -202,10 +202,10 @@ if (isset($_SESSION['user_id'])) {
 
                                         <td>
                                             <div class="action-btn-group">
-                                                <a class="btn btn-primary btn-sm-custom" href="update_product.php?id=<?php echo $row['id']; ?>">
+                                                <a class="btn btn-primary btn-sm-custom" href="update_product.php?product_id=<?php echo $row['id']; ?>">
                                                     <i class="fa-solid fa-pen"></i> Edit
                                                 </a>
-                                                <a class="btn btn-danger btn-sm-custom" href="delete_product.php?id=<?php echo $row['id']; ?>">
+                                                <a class="btn btn-danger btn-sm-custom" href="delete_product.php?product_id=<?php echo $row['id']; ?>">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </a>
                                             </div>
