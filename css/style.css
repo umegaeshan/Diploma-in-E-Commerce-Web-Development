@@ -1,233 +1,119 @@
-/* product.php & index.php files css file  */
+/* ODARA MODERN MINIMAL THEME */
 
+/* 1. Global Layout */
 body {
-  background-color: rgb(7, 4, 29);
-  /* Fixed Slash */
-  background-image: url("images/background-with-smoke-blur-effect.jpg");
+  background-color: #f8f9fa; /* Soft Gray */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 2. Navbar Styling */
+.navbar {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #212529 !important; /* Force Dark */
 }
 
 .navbar-brand {
-  padding-left: 10px;
-  color: aqua;
-  font-size: 35px;
   font-weight: bold;
+  letter-spacing: 1px;
 }
 
-.more-button {
-  position: absolute;
-  margin-top: 100px;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
+/* 3. Card & Container Styling (The "White Box" effect) */
+.main-container {
+  flex: 1;
+  padding: 40px 0;
 }
 
-.container-fluid .navbar-nav .nav-item a {
-  color: aqua;
-}
-
-.collapse {
-  margin-left: 100px;
-}
-
-.home-para {
-  position: absolute;
-  margin: 30px;
-  padding: 30px;
-  font-family: Arial, Helvetica, sans-serif;
-  z-index: 11;
-  top: 80px;
-  color: white;
-  font-size: 20px;
-  letter-spacing: 2px;
-  line-height: 40px;
-}
-
-.image_slider {
-  padding: 20px 20px 300px 20px;
-  margin: 10px 10px 40px 10px;
-}
-
-.slider_buttons {
-  background-color: white;
-}
-
-.image_slider img {
-  width: 100%;
-  height: 600px; /* Adjust the height */
-  object-fit: cover; /* Crops image nicely */
-}
-
-.web-name {
-  font-size: 40px;
-}
-
-.feature-products {
-  margin: 100px;
-  z-index: 11;
-}
-
-.feature-product-title {
-  color: rgb(21, 241, 230);
-  text-align: center;
-}
-
-.odora-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  padding: 20px;
-  margin-left: 6%;
-}
-
-.odora-grid div {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 40px;
-  backdrop-filter: blur(6px);
+.content-card {
+  background: #ffffff;
   border-radius: 15px;
-  color: #fff;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  height: 400px;
-  width: 400px;
-  transition: transform 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  padding: 40px;
+  border: none;
+  margin-bottom: 20px;
 }
 
-.odora-grid div:hover {
-  transform: scale(1.1);
-}
-
-/* FILTER STYLES */
-
-.filter {
-  z-index: 20;
+/* 4. Auth Pages (Login/Register) Split Layout */
+.auth-wrapper {
   display: flex;
-  align-items: center;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.auth-image {
+  width: 50%;
+  object-fit: cover;
+  display: none; /* Hidden on mobile */
+}
+@media (min-width: 768px) {
+  .auth-image {
+    display: block;
+  }
+}
+
+.auth-form {
+  padding: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 5%;
-  background-color: rgb(56, 56, 56);
 }
 
-.filter-para {
-  color: rgb(0, 0, 0);
-  background-color: rgb(20, 255, 91);
+/* 5. Product Grid Styling */
+.product-card {
+  background: #ffffff;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #eee;
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.product-body {
+  padding: 20px;
+}
+
+.price-tag {
+  font-size: 1.2rem;
   font-weight: bold;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 10px;
+  color: #212529;
 }
 
-/* PRODUCT PAGE STYLING  */
-
-.odora-product-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 100px;
-  padding: 10px;
-  margin-top: 40px;
-  margin-left: 6%;
-  height: 200px;
-}
-
-.odora-product-grid .col {
-  border: 1px solid yellow;
-  padding: 5px;
-  border-radius: 20px;
-}
-
-.odora-product-grid .col:hover {
-  background-color: #000000;
-}
-
-.odora-product-grid .col img {
-  border-radius: 20px;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.odora-product-grid .col img:hover {
-  /* Fixed: transform syntax */
-  transform: scale(1.1);
-  background-color: rgba(232, 232, 233, 0.4);
-  background-image: linear-gradient(90deg, red 10%, yellow 50%, green);
-}
-
-.product-button .btn {
-  position: absolute;
-  margin-top: -3%;
-  margin-left: 15%;
-  transition: transform 0.3s ease;
-  background-color: chartreuse;
-  color: black;
-  font-weight: bolder;
-}
-
-.product-button .btn:hover {
-  transform: scale(1.1);
-  background-color: rgb(255, 217, 0);
-  color: black;
-  font-weight: bolder;
-}
-
-.product-offer-button {
-  position: absolute;
-  margin-top: -3%;
-  margin-left: 21%;
-  transition: transform 0.3s ease;
-  font-weight: bolder;
-  color: black;
-  font-weight: bolder;
-}
-
-i {
-  position: absolute;
-  margin-top: -14%;
-  margin-left: 24%;
-}
-
-/* PRODUCT PRICE DETAILS */
-
-.product-details {
-  position: absolute;
-  color: white;
-  margin-top: -12%;
-  margin-left: 15%;
-  font-weight: bold;
-  padding: 5px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-
-.product-details .name {
-  font-size: 20px;
-  padding-bottom: 10px;
-}
-
-.odora-product-grid .col:hover .product-details {
-  background-color: rgb(61, 61, 61);
-  border-radius: 20px;
-}
-
-.list .list-price {
+.list-price {
   text-decoration: line-through;
-  color: rgb(248, 75, 75);
+  color: #999;
+  font-size: 0.9rem;
+  margin-right: 10px;
 }
 
-/* FOOTER STYLING  */
-
+/* 6. Footer Styling */
 .footer {
-  background-color: #717171;
-}
-.container {
-  padding: 50px;
-  margin-top: 100px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr 2fr;
-  grid-gap: 2rem;
+  background-color: #212529;
+  color: #adb5bd;
+  padding: 40px 0 20px;
+  margin-top: auto;
 }
 
-.footer-product {
-  position: absolute;
-  margin-bottom: 0%;
+.footer .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
