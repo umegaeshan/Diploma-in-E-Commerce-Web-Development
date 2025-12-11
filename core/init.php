@@ -1,6 +1,4 @@
 <?php
-
-
 $conn = mysqli_connect('localhost', 'root', '', 'odara_alison');
 
 if (mysqli_connect_error()) {

@@ -1,6 +1,9 @@
+/* product.php & index.php files css file  */
+
 body {
   background-color: rgb(7, 4, 29);
-  background-image: url("images\background-with-smoke-blur-effect.jpg");
+  /* Fixed Slash */
+  background-image: url("images/background-with-smoke-blur-effect.jpg");
 }
 
 .navbar-brand {
@@ -12,7 +15,8 @@ body {
 
 .more-button {
   position: absolute;
-  bottom: 120px;
+  margin-top: 100px;
+  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -39,17 +43,32 @@ body {
   line-height: 40px;
 }
 
+.image_slider {
+  padding: 20px 20px 300px 20px;
+  margin: 10px 10px 40px 10px;
+}
+
+.slider_buttons {
+  background-color: white;
+}
+
+.image_slider img {
+  width: 100%;
+  height: 600px; /* Adjust the height */
+  object-fit: cover; /* Crops image nicely */
+}
+
 .web-name {
   font-size: 40px;
 }
 
 .feature-products {
-  margin: 50px;
+  margin: 100px;
   z-index: 11;
 }
 
 .feature-product-title {
-  color: rgb(37, 192, 240);
+  color: rgb(21, 241, 230);
   text-align: center;
 }
 
@@ -99,7 +118,7 @@ body {
   border-radius: 10px;
 }
 
-/*  PRODUCT PAGE STYLING  */
+/* PRODUCT PAGE STYLING  */
 
 .odora-product-grid {
   display: grid;
@@ -123,13 +142,13 @@ body {
 
 .odora-product-grid .col img {
   border-radius: 20px;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .odora-product-grid .col img:hover {
-  transform: scale(1.1) 0.4s ease;
+  /* Fixed: transform syntax */
+  transform: scale(1.1);
   background-color: rgba(232, 232, 233, 0.4);
-  transition: opacity 0.4s ease;
   background-image: linear-gradient(90deg, red 10%, yellow 50%, green);
 }
 
@@ -166,7 +185,7 @@ i {
   margin-left: 24%;
 }
 
-/*  PRODUCT PRICE DETAILS */
+/* PRODUCT PRICE DETAILS */
 
 .product-details {
   position: absolute;
@@ -194,7 +213,7 @@ i {
   color: rgb(248, 75, 75);
 }
 
-/*  FOOTER STYLING  */
+/* FOOTER STYLING  */
 
 .footer {
   background-color: #717171;
