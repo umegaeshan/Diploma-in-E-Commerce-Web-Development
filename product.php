@@ -75,8 +75,7 @@
                 <img src="images/03 freedom.webp" width="275px" height="275px">
                 <div class="product-details">
                     <div class="name">O3 FREEDOM</div>
-                    <div class="list">List Price: <span class="list-price">$23.21</span></div>
-                    <div class="our">Our Price: $225.00</div>
+                    <div class="our"> Price: $225.00</div>
                     <div class="quantity">Quantity : 59.99 </div>
                 </div>
                 <div class="product-button">
@@ -118,8 +117,7 @@
                 <img src="images/03 freedom.webp" width="275px" height="275px">
                 <div class="product-details">
                     <div class="name">O3 FREEDOM</div>
-                    <div class="list">List Price: <span class="list-price">$23.21</span></div>
-                    <div class="our">Our Price: $225.00</div>
+                    <div class="our"> Price: $225.00</div>
                     <div class="quantity">Quantity : 59.99 </div>
                 </div>
                 <div class="product-button">
@@ -161,8 +159,7 @@
                 <img src="images/03 freedom.webp" width="275px" height="275px">
                 <div class="product-details">
                     <div class="name">O3 FREEDOM</div>
-                    <div class="list">List Price: <span class="list-price">$23.21</span></div>
-                    <div class="our">Our Price: $225.00</div>
+                    <div class="our"> Price: $225.00</div>
                     <div class="quantity">Quantity : 59.99 </div>
                 </div>
                 <div class="product-button">
@@ -204,8 +201,7 @@
                 <img src="images/03 freedom.webp" width="275px" height="275px">
                 <div class="product-details">
                     <div class="name">O3 FREEDOM</div>
-                    <div class="list">List Price: <span class="list-price">$23.21</span></div>
-                    <div class="our">Our Price: $225.00</div>
+                    <div class="our"> Price: $225.00</div>
                     <div class="quantity">Quantity : 59.99 </div>
                 </div>
                 <div class="product-button">

@@ -35,7 +35,7 @@ if (isset($_SESSION['user_id'])) {
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">ODARA</a>
+            <a class="navbar-brand" href="index.php">ODARA <span style="font-size: 10px;">admin</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,7 +43,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav me-auto fs-4">
                     <li class="nav-item">
-                        <a class="nav-link active ms-5 me-5" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link active ms-5 me-5" aria-current="page" href="admin_dashbord.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active ms-5 me-5" aria-current="page" href="add_product.php">Add Products</a>
