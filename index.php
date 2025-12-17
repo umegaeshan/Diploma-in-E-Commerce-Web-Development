@@ -28,15 +28,17 @@
 					<li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
 					<li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
 				</ul>
-				<?php if (isset($_SESSION['user_id'])) { ?>
+				<?php if (!isset($_SESSION['user_id'])) { ?>
 					<div class="d-flex gap-2">
 						<a href="login.php" class="btn btn-outline-light">Log In</a>
 						<a href="register.php" class="btn btn-warning">Register</a>
 					</div>
-				<?php	}  ?>
-				<div class="d-flex gap-2">
-					<a href="logout_user.php" class="btn btn-sm btn-danger">Log Out</a>
-				</div>
+				<?php } else { ?>
+					<div class="d-flex gap-2">
+						<a href="logout_user.php" class="btn btn-sm btn-danger">Log Out</a>
+					</div>
+				<?php } ?>
+
 
 			</div>
 		</div>

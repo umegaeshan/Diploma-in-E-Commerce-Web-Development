@@ -1,3 +1,11 @@
+<?php
+session_start();
+include_once 'core/init.php';
+
+$sql = "SELECT * FROM product";
+$result = mysqli_query($conn, $sql);
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -5,6 +13,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Products | ODARA</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/03c57d27b5.js" crossorigin="anonymous"></script>
@@ -12,45 +21,49 @@
 
 <body>
 
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.php">ODARA</a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="product.php">Product</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
                 </ul>
-                <?php if (isset($_SESSION['user_id'])) { ?>
+
+                <?php if (!isset($_SESSION['user_id'])) { ?>
                     <div class="d-flex gap-2">
                         <a href="login.php" class="btn btn-outline-light">Log In</a>
                         <a href="register.php" class="btn btn-warning">Register</a>
                     </div>
-                <?php    }  ?>
-                <div class="d-flex gap-2">
-                    <a href="logout_user.php " class="btn btn-sm btn-danger">Log Out</a>
-                </div>
-
+                <?php } else { ?>
+                    <a href="logout_user.php" class="btn btn-danger btn-sm">Log Out</a>
+                <?php } ?>
             </div>
         </div>
     </nav>
 
+    <!-- FILTER BAR -->
     <div class="bg-white py-3 border-bottom shadow-sm">
-        <div class="container d-flex gap-3 justify-content-center">
+        <div class="container d-flex justify-content-center gap-3">
             <div class="dropdown">
-                <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">CATEGORY</button>
+                <button class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown">CATEGORY</button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Men</a></li>
                     <li><a class="dropdown-item" href="#">Women</a></li>
                     <li><a class="dropdown-item" href="#">Babies</a></li>
                 </ul>
             </div>
+
             <div class="dropdown">
-                <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">PRICE</button>
+                <button class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown">PRICE</button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Min - Max</a></li>
                     <li><a class="dropdown-item" href="#">Max - Min</a></li>
@@ -59,79 +72,77 @@
         </div>
     </div>
 
-    <div class="container main-container">
+    <!-- PRODUCTS -->
+    <div class="container my-5">
         <div class="row g-4">
 
-            <div class="col-md-4 col-sm-6">
-                <div class="product-card">
-                    <img src="images/03 freedom.webp" alt="Product">
-                    <div class="position-absolute top-0 end-0 p-2">
-                        <span class="badge bg-danger">5% OFF</span>
-                    </div>
-                    <div class="product-body text-center">
-                        <h5 class="fw-bold mb-1">O3 FREEDOM</h5>
-                        <p class="mb-2">
-                            <span class="list-price">$23.21</span>
-                            <span class="price-tag">$225.00</span>
-                        </p>
-                        <div class="d-flex justify-content-center gap-2">
-                            <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#detailsModal_1">Details</button>
-                            <button class="btn btn-outline-danger btn-sm"><i class="fa-regular fa-heart"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <div class="col-md-4 col-sm-6">
+                    <div class="product-card position-relative">
 
-            <div class="modal fade" id="detailsModal_1" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">O3 Freedom Details</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        <img src="images/<?php echo $row['image']; ?>" class="img-fluid" alt="Product">
+
+                        <div class="position-absolute top-0 end-0 p-2">
+                            <span class="badge bg-danger">5% OFF</span>
                         </div>
-                        <div class="modal-body text-center">
-                            <img src="images/03 freedom.webp" style="width: 200px;" class="mb-3">
-                            <p>Vibrant, fruity, and full of energy.</p>
-                            <h4 class="text-success">Rs 2,250.00</h4>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <a href="register.php" class="btn btn-warning">Add To Cart</a>
+
+                        <div class="product-body text-center mt-3">
+                            <h5 class="fw-bold"><?php echo $row['name']; ?></h5>
+
+                            <p>
+                                <span class="list-price text-muted"><?php echo $row['price']; ?></span>
+                                <span class="price-tag fw-bold"><?php echo $row['price']; ?></span>
+                            </p>
+
+                            <div class="d-flex justify-content-center gap-2">
+                                <!-- FIXED DETAILS BUTTON -->
+                                <button class="btn btn-dark btn-sm"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#detailsModal_<?php echo $row['id']; ?>">
+                                    Details
+                                </button>
+
+                                <button class="btn btn-outline-danger btn-sm">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+                <!-- MODAL -->
+                <div class="modal fade" id="detailsModal_<?php echo $row['id']; ?>" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h5 class="modal-title"><?php echo $row['name']; ?> Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <div class="modal-body text-center">
+                                <img src="images/<?php echo $row['image']; ?>" class="mb-3" style="width:200px">
+                                <p><?php echo $row['description']; ?></p>
+                                <h4 class="text-success"><?php echo $row['price']; ?></h4>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <a href="register.php" class="btn btn-warning">Add To Cart</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
 
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5>About ODARA</h5>
-                    <p class="footer-text">Premium online cake ordering shop. We deliver happiness with every slice. Quality ingredients and best service guaranteed.</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled footer-text">
-                        <li><a href="#" class="text-decoration-none text-muted">Dashboard</a></li>
-                        <li><a href="#" class="text-decoration-none text-muted">New Orders</a></li>
-                        <li><a href="#" class="text-decoration-none text-muted">Stock Management</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Contact</h5>
-                    <p class="footer-text">
-                        <i class="fa-solid fa-envelope me-2"></i> support@odara.com<br>
-                        <i class="fa-solid fa-phone me-2"></i> +94 77 123 4567<br>
-                        <i class="fa-solid fa-location-dot me-2"></i> Colombo, Sri Lanka
-                    </p>
-                </div>
-            </div>
-            <div class="text-center pt-3 border-top border-secondary">
-                <small>&copy; 2025 ODARA. All Rights Reserved.</small>
-            </div>
+    <!-- FOOTER -->
+    <footer class="footer bg-dark text-light py-4">
+        <div class="container text-center">
+            <small>&copy; 2025 ODARA. All Rights Reserved.</small>
         </div>
     </footer>
 
