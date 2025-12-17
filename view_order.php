@@ -156,11 +156,11 @@ if (isset($_SESSION['user_id'])) {
 
     <div class="container main-container">
 
-        <?php if (isset($result) && !$result): ?>
+        <!-- <?php if (isset($result) && !$result): ?>
             <div class="alert alert-danger shadow-sm">Error: <?php echo $conn->error; ?></div>
         <?php elseif (isset($result) && $_SERVER['REQUEST_METHOD'] == 'POST'): ?>
             <div class="alert alert-success shadow-sm">Action Completed Successfully!</div>
-        <?php endif; ?>
+        <?php endif; ?> -->
 
         <div class="row justify-content-center">
             <div class="col-12">
@@ -186,7 +186,7 @@ if (isset($_SESSION['user_id'])) {
 
                                         <td>
                                             <small class="text-muted">
-                                                <?php echo substr($row['description'], 0, 80) . '...'; ?>
+                                                <?php echo $row['description'] . '...'; ?>
                                             </small>
                                         </td>
 

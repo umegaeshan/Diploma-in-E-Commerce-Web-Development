@@ -48,34 +48,36 @@ if (isset($_SESSION['user_id'])) {
         </div>
     </nav>
 
-    <div class="container main-container">
-        <div class="row mb-4">
-            <div class="col-12">
-                <div class="content-card">
-                    <h2 class="fw-bold">Welcome Admin</h2>
-                    <p class="text-muted">Manage your store efficiently.</p>
+    <center>
+        <div class="container main-container">
+            <div class="row ">
+                <div class="col-12">
+                    <div class="content-card">
+                        <h2 class="fw-bold">Welcome Admin</h2>
+                        <p class="text-muted">Manage your store efficiently.</p>
+                    </div>
                 </div>
             </div>
-        </div>
+    </center>
 
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="content-card text-center h-100">
-                    <i class="fa-solid fa-plus-circle fa-3x mb-3 text-success"></i>
-                    <h3>Add Product</h3>
-                    <p>Insert new items into your catalog.</p>
-                    <a href="add_product.php" class="btn btn-success">Go to Add Product</a>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="content-card text-center h-100">
-                    <i class="fa-solid fa-home fa-3x mb-3 text-primary"></i>
-                    <h3>View Site</h3>
-                    <p>Visit the main homepage.</p>
-                    <a href="index.php" class="btn btn-primary">Go Home</a>
-                </div>
+    <div class="row g-4 m-5">
+        <div class="col-md-6">
+            <div class="content-card text-center h-100">
+                <i class="fa-solid fa-plus-circle fa-3x mb-3 text-success"></i>
+                <h3>Add Product</h3>
+                <p>Insert new items into your catalog.</p>
+                <a href="add_product.php" class="btn btn-success">Go to Add Product</a>
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="content-card text-center h-100">
+                <i class="fa-solid fa-home fa-3x mb-3 text-primary"></i>
+                <h3>View Site</h3>
+                <p>Visit the main homepage.</p>
+                <a href="index.php" class="btn btn-primary">Go Home</a>
+            </div>
+        </div>
+    </div>
     </div>
 
 

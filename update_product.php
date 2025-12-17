@@ -166,7 +166,6 @@ if (isset($_SESSION['user_id'])) {
                     <div class="col-md-6 mb-3">
                         <label for="categorie" class="form-label">Category</label>
                         <select name="categorie_id" id="categorie" class="form-select" required>
-                            <option value="" disabled selected>Select Category</option>
                             <?php
                             // Reset pointer just in case
                             if (mysqli_num_rows($result1) > 0) {

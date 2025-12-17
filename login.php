@@ -21,8 +21,10 @@ if (isset($_POST['login-button'])) {
 
             if ($_SESSION['user_role'] == "admin") {
                 header("Location: admin_dashbord.php");
+                exit();
             } else {
                 header("Location: index.php");
+                exit();
             }
             exit();
         } else {

@@ -28,27 +28,62 @@
 					<li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
 					<li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
 				</ul>
+				<?php if (isset($_SESSION['user_id'])) { ?>
+					<div class="d-flex gap-2">
+						<a href="login.php" class="btn btn-outline-light">Log In</a>
+						<a href="register.php" class="btn btn-warning">Register</a>
+					</div>
+				<?php	}  ?>
 				<div class="d-flex gap-2">
-					<a href="login.php" class="btn btn-outline-light">Log In</a>
-					<a href="register.php" class="btn btn-warning">Register</a>
+					<a href="logout_user.php" class="btn btn-sm btn-danger">Log Out</a>
 				</div>
+
 			</div>
 		</div>
 	</nav>
 
-	<div class="container-fluid p-0 mb-5">
-		<div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img src="images/banner6.jpg" class="d-block w-100" style="height: 500px; object-fit: cover;" alt="...">
-					<div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-4 rounded">
-						<h2 class="text-white fw-bold">ODARA</h2>
-						<p class="text-light">Timeless elegance through premium fragrances.</p>
-					</div>
+	<!-- Scroling Images -->
+
+	<div id="carouselExampleCaptions" class="carousel slide">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		</div>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="images\banner3.jpg" class="d-block w-100" alt="...">
+				<div class="carousel-caption d-none d-md-block">
+					<h5>First slide label</h5>
+					<p>Some representative placeholder content for the first slide.</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img src="images\banner5.jpg" class="d-block w-100" alt="...">
+				<div class="carousel-caption d-none d-md-block">
+					<h5>Second slide label</h5>
+					<p>Some representative placeholder content for the second slide.</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img src="images\monochrome-beauty-product-skincare.jpg" class="d-block w-100" alt="...">
+				<div class="carousel-caption d-none d-md-block">
+					<h5>Third slide label</h5>
+					<p>Some representative placeholder content for the third slide.</p>
 				</div>
 			</div>
 		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
 	</div>
+
+
 
 	<div class="container main-container">
 		<h2 class="text-center mb-5 fw-bold text-dark">Featured Categories</h2>
@@ -87,7 +122,10 @@
 
 	<footer class="footer">
 		<div class="container">
-			<div>&copy; 2025 ODARA. Premium Fragrances.</div>
+			<center>
+				<div>&copy; 2025 ODARA. Premium Fragrances.</div>
+			</center>
+
 		</div>
 	</footer>
 
