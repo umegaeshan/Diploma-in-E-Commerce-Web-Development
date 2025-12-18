@@ -2,8 +2,20 @@
 session_start();
 include_once 'core/init.php';
 
-$sql = "SELECT * FROM product";
-$result = mysqli_query($conn, $sql);
+
+
+$sql_category = "SELECT * FROM categories";
+$result_category = mysqli_query($conn, $sql_category);
+
+if (isset($_GET['category_name'])) {
+    $category_name = $_GET['category_name'];
+    $sql_product_category = "SELECT * FROM  product WHERE categorie_name= '$category_name' ";
+    $result_product_category = mysqli_query($conn, $sql_product_category);
+} else {
+    $sql_product_category = "SELECT * FROM product";
+    $result_product_category = mysqli_query($conn, $sql_product_category);
+}
+
 ?>
 
 <!doctype html>
@@ -32,10 +44,12 @@ $result = mysqli_query($conn, $sql);
 
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav me-auto">
+
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="product.php">Product</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
+
                 </ul>
 
                 <?php if (!isset($_SESSION['user_id'])) { ?>
@@ -44,7 +58,10 @@ $result = mysqli_query($conn, $sql);
                         <a href="register.php" class="btn btn-warning">Register</a>
                     </div>
                 <?php } else { ?>
-                    <a href="logout_user.php" class="btn btn-danger btn-sm">Log Out</a>
+                    <div class="d-flex gap-2">
+                        <a href="logout_user.php" class="btn btn-sm btn-danger">Log Out</a>
+                        <a href="single_order.php" class="btn btn-outline-warning"><i class="fa-solid fa-cart-shopping fa-xl" style="color:rgb(162, 128, 7);"></i></a>
+                    </div>
                 <?php } ?>
             </div>
         </div>
@@ -54,11 +71,20 @@ $result = mysqli_query($conn, $sql);
     <div class="bg-white py-3 border-bottom shadow-sm">
         <div class="container d-flex justify-content-center gap-3">
             <div class="dropdown">
-                <button class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown">CATEGORY</button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Men</a></li>
-                    <li><a class="dropdown-item" href="#">Women</a></li>
-                    <li><a class="dropdown-item" href="#">Babies</a></li>
+                <button class="btn btn-outline-dark dropdown-toggle px-4 rounded-pill"
+                    type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    CATEGORY
+                </button>
+
+                <ul class="dropdown-menu shadow rounded-3">
+                    <?php while ($row_category = mysqli_fetch_assoc($result_category)) { ?>
+                        <li>
+                            <a class="dropdown-item"
+                                href="product.php?category_name=<?php echo urlencode($row_category['name']); ?>">
+                                <?php echo htmlspecialchars($row_category['name']); ?>
+                            </a>
+                        </li>
+                    <?php } ?>
                 </ul>
             </div>
 
@@ -72,33 +98,36 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 
+
+
+
     <!-- PRODUCTS -->
     <div class="container my-5">
         <div class="row g-4">
 
-            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+            <?php while ($row_product_category = mysqli_fetch_assoc($result_product_category)) { ?>
+
                 <div class="col-md-4 col-sm-6">
                     <div class="product-card position-relative">
 
-                        <img src="images/<?php echo $row['image']; ?>" class="img-fluid" alt="Product">
+                        <img src="images/<?php echo $row_product_category['image']; ?>" class="img-fluid" alt="Product">
 
                         <div class="position-absolute top-0 end-0 p-2">
                             <span class="badge bg-danger">5% OFF</span>
                         </div>
 
                         <div class="product-body text-center mt-3">
-                            <h5 class="fw-bold"><?php echo $row['name']; ?></h5>
+                            <h5 class="fw-bold"><?php echo $row_product_category['name']; ?></h5>
 
                             <p>
-                                <span class="list-price text-muted"><?php echo $row['price']; ?></span>
-                                <span class="price-tag fw-bold"><?php echo $row['price']; ?></span>
+                                <span class="list-price text-muted"><?php echo $row_product_category['price']; ?></span>
+                                <span class="price-tag fw-bold"><?php echo $row_product_category['price']; ?></span>
                             </p>
 
                             <div class="d-flex justify-content-center gap-2">
-                                <!-- FIXED DETAILS BUTTON -->
                                 <button class="btn btn-dark btn-sm"
                                     data-bs-toggle="modal"
-                                    data-bs-target="#detailsModal_<?php echo $row['id']; ?>">
+                                    data-bs-target="#detailsModal_<?php echo $row_product_category['id']; ?>">
                                     Details
                                 </button>
 
@@ -107,33 +136,41 @@ $result = mysqli_query($conn, $sql);
                                 </button>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
                 <!-- MODAL -->
-                <div class="modal fade" id="detailsModal_<?php echo $row['id']; ?>" tabindex="-1">
+                <div class="modal fade" id="detailsModal_<?php echo $row_product_category['id']; ?>" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
 
                             <div class="modal-header">
-                                <h5 class="modal-title"><?php echo $row['name']; ?> Details</h5>
+                                <h5 class="modal-title"><?php echo $row_product_category['name']; ?> Details</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
 
                             <div class="modal-body text-center">
-                                <img src="images/<?php echo $row['image']; ?>" class="mb-3" style="width:200px">
-                                <p><?php echo $row['description']; ?></p>
-                                <h4 class="text-success"><?php echo $row['price']; ?></h4>
+                                <img src="images/<?php echo $row_product_category['image']; ?>" style="width:200px">
+                                <p><?php echo $row_product_category['description']; ?></p>
+                                <h4 class="text-success"><?php echo $row_product_category['price']; ?></h4>
                             </div>
 
                             <div class="modal-footer">
                                 <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <a href="register.php" class="btn btn-warning">Add To Cart</a>
+                                <?php if (isset($_SESSION['user_id'])) {  ?>
+                                    <a href="single_order.php?user_id= <?php echo $_SESSION['user_id'] ?>&product_id= <?php echo $row_product_category['product_id'] ?>&product_price= <?php echo $row_product_category['price'] ?>">Add To Cart</a>
+                                <?php } ?>
+                                <?php if (!isset($_SESSION['user_id'])) {  ?>
+                                    <a href="register.php" class="btn btn-warning">Add To Cart</a>
+                                <?php } ?>
+
                             </div>
 
                         </div>
                     </div>
                 </div>
+
             <?php } ?>
 
         </div>

@@ -1,4 +1,7 @@
-<?php require_once 'core/init.php' ?>
+<?php
+
+session_start();
+require_once 'core/init.php' ?>
 
 <!doctype html>
 <html lang="en">
@@ -36,6 +39,7 @@
 				<?php } else { ?>
 					<div class="d-flex gap-2">
 						<a href="logout_user.php" class="btn btn-sm btn-danger">Log Out</a>
+						<a href="single_order.php" class="btn btn-outline-warning"><i class="fa-solid fa-cart-shopping fa-xl" style="color:rgb(162, 128, 7);"></i></a>
 					</div>
 				<?php } ?>
 

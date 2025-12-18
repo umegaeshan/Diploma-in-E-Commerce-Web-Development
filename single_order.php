@@ -2,7 +2,30 @@
 session_start();
 include_once 'core/init.php';
 
+if (isset($_SESSION['user_id'])) {
+    if (isset($_GET['user_id'], $_GET['priduct_id'], $_GET['product_price'])) {
+        $user_id = $_GET['user_id'];
+        $product_id = $_GET['product_id'];
+        $product_price = $_GET['product_price'];
+
+
+        $sql = "INSERT INTO single_order(user_id,product_id,total_amount) VALUES('$user_id','$product_id',' $product_price')";
+
+        $result = mysqli_query($conn, $sql);
+
+        if (!$result) {
+            echo "<h1> Error {$conn->error}</h1> ";
+        } else {
+            echo "<h1> Order Added Succesfuly !! </h1> ";
+        }
+    }
+} else {
+    header:
+    ("Location:index.php");
+}
+
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -10,7 +33,7 @@ include_once 'core/init.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>About Us | ODARA</title>
+    <title>MY Oreders | ODARA</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/03c57d27b5.js" crossorigin="anonymous"></script>
@@ -29,7 +52,7 @@ include_once 'core/init.php';
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="product.php">Product</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="about.php">About</a></li>
+                    <li class="nav-item"><a class="nav-link " href="about.php">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
                 </ul>
                 <?php if (!isset($_SESSION['user_id'])) { ?>
@@ -40,7 +63,7 @@ include_once 'core/init.php';
                 <?php } else { ?>
                     <div class="d-flex gap-2">
                         <a href="logout_user.php" class="btn btn-sm btn-danger">Log Out</a>
-                        <a href="single_order.php" class="btn btn-outline-warning"><i class="fa-solid fa-cart-shopping fa-xl" style="color:rgb(162, 128, 7);"></i></a>
+                        <a href="single_order.php" class="btn btn-outline-warning"><i class="fa-solid fa-cart-shopping fa-xl active" style="color:rgb(162, 128, 7);"></i></a>
                     </div>
                 <?php } ?>
 
@@ -48,66 +71,41 @@ include_once 'core/init.php';
         </div>
     </nav>
 
-    <div class="container main-container">
+    <div class="container main-container mt-5">
 
-        <div class="content-card text-center mb-5">
-            <h1 class="fw-bold mb-3">About ODARA</h1>
-            <p class="text-muted fs-5" style="max-width: 700px; margin: 0 auto;">
-                We believe that a fragrance is more than just a scent—it is a memory, an emotion, and a statement of elegance.
-            </p>
-        </div>
-
-        <div class="row g-5 align-items-center mb-5">
-            <div class="col-md-6">
-                <img src="images/banner2.jpg" class="img-fluid rounded-4 shadow-sm w-100" style="height: 400px; object-fit: cover;" alt="Our Story">
-            </div>
-            <div class="col-md-6">
-                <h3 class="fw-bold mb-4">Our Story</h3>
-                <p class="text-secondary lh-lg">
-                    Founded in 2025, ODARA began with a simple mission: to bring the world's most exquisite fragrances to your doorstep. What started as a small passion project has grown into a premium destination for scent lovers.
-                </p>
-                <p class="text-secondary lh-lg">
-                    We carefully curate our collection to ensure every bottle represents quality, longevity, and sophistication. Whether you are looking for a bold statement or a subtle daily wear, ODARA has the perfect match for your personality.
-                </p>
-            </div>
-        </div>
-
-        <h3 class="text-center fw-bold mb-4">Why Choose ODARA?</h3>
-        <div class="row g-4">
-
-            <div class="col-md-4">
-                <div class="content-card text-center h-100 p-4">
-                    <div class="mb-3 text-primary">
-                        <i class="fa-solid fa-gem fa-3x"></i>
-                    </div>
-                    <h5>Premium Quality</h5>
-                    <p class="text-muted small">We only stock 100% authentic and high-grade fragrances that last all day.</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="content-card text-center h-100 p-4">
-                    <div class="mb-3 text-success">
-                        <i class="fa-solid fa-truck-fast fa-3x"></i>
-                    </div>
-                    <h5>Fast Delivery</h5>
-                    <p class="text-muted small">Island-wide delivery within 2-3 working days, straight to your doorstep.</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="content-card text-center h-100 p-4">
-                    <div class="mb-3 text-warning">
-                        <i class="fa-solid fa-headset fa-3x"></i>
-                    </div>
-                    <h5>24/7 Support</h5>
-                    <p class="text-muted small">Our dedicated support team is always here to help you find your scent.</p>
-                </div>
-            </div>
-
-        </div>
+        <table class="table table-hover ">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>@social</td>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
+
 
     <footer class="footer">
         <div class="container">
