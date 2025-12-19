@@ -118,6 +118,7 @@ if (isset($_GET['category_name'])) {
 
                         <div class="product-body text-center mt-3">
                             <h5 class="fw-bold"><?php echo $row_product_category['name']; ?></h5>
+                            <p>Stock - <?php echo $row_product_category['stock_quantity']; ?> items</p>
 
                             <p>
                                 <span class="list-price text-muted"><?php echo $row_product_category['price']; ?></span>
@@ -153,7 +154,8 @@ if (isset($_GET['category_name'])) {
                             <div class="modal-body text-center">
                                 <img src="images/<?php echo $row_product_category['image']; ?>" style="width:200px">
                                 <p><?php echo $row_product_category['description']; ?></p>
-                                <h4 class="text-success"><?php echo $row_product_category['price']; ?></h4>
+                                <p>Stock - <?php echo $row_product_category['stock_quantity']; ?> items</p>
+                                <h4 class="text-success"> Rs.<?php echo $row_product_category['price']; ?></h4>
                             </div>
 
                             <div class="modal-footer">

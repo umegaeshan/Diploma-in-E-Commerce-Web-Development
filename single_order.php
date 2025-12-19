@@ -6,10 +6,10 @@ if (isset($_SESSION['user_id'])) {
     if (isset($_GET['user_id'], $_GET['product_id'], $_GET['product_price'])) {
         $user_id = (int) $_GET['user_id'];
         $product_id = (int) $_GET['product_id'];
-        $product_price = (int) $_GET['product_price'];
+        $total_amount = (int) $_GET['product_price'];
 
 
-        $sql = "INSERT INTO single_order (user_id, product_id, total_amount) VALUES('$user_id', '$product_id', ' $product_price')";
+        $sql = "INSERT INTO single_order (user_id, product_id, total_amount) VALUES('$user_id', '$product_id', ' $total_amount')";
 
         $result = mysqli_query($conn, $sql);
 
@@ -18,12 +18,23 @@ if (isset($_SESSION['user_id'])) {
         } else {
             $order_id = mysqli_insert_id($conn);
             $payment_method = "cashon";
-            $sql_payment = "INSERT INTO payments(order_id,user_id,payment_method)VALUES('$order_id','$user_id','$payment_method')";
+            $sql_payment = "INSERT INTO payments(order_id,user_id,total_amount,payment_method)VALUES('$order_id','$user_id','$total_amount ','$payment_method')";
             $result_payment = mysqli_query($conn, $sql_payment);
 
             if (!$result_payment) {
                 echo "<h1> Error {$conn->error} </h1>";
             }
+
+            $sql_update_stock = "UPDATE product 
+                                 SET stock_quantity = stock_quantity - 1 
+                                 WHERE id =  $product_id";
+
+            $result_update_stock = mysqli_query($conn, $sql_update_stock);
+
+            if (!$result_update_stock) {
+                die("Error: " . mysqli_error($conn));
+            }
+
 
             echo '
             <!-- SUCCESS MODAL -->
