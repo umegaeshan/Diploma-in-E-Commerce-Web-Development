@@ -5,7 +5,8 @@ session_start();
 if (isset($_SESSION['user_id'])) {
     if ($_SESSION['user_role'] == "admin") {
 
-        $sql = "SELECT * FROM product";
+
+        $sql = "SELECT * FROM payments ";
         $result = mysqli_query($conn, $sql);
 
         // Moved the success/error message inside the HTML body for better layout
@@ -140,7 +141,8 @@ if (isset($_SESSION['user_id'])) {
                 <ul class="navbar-nav me-auto ms-4 mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="admin_dashbord.php">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="add_product.php">Add Products</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="view_order.php">View Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link " href="view_order.php">View Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="admin_orders.php">Addmin Orders</a></li>
                 </ul>
 
                 <div class="d-flex align-items-center gap-2">
@@ -149,67 +151,48 @@ if (isset($_SESSION['user_id'])) {
                         <button class="btn btn-sm btn-outline-info" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                     <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
+                    <a href="admin_profile.php" class="btn btn-outline-warning"><i class="fa-solid fa-user fa-xl" style="color: #FFD43B;"></i></a>
                 </div>
             </div>
         </div>
     </nav>
 
+
+
     <div class="container main-container">
-
-        <!-- <?php if (isset($result) && !$result): ?>
-            <div class="alert alert-danger shadow-sm">Error: <?php echo $conn->error; ?></div>
-        <?php elseif (isset($result) && $_SERVER['REQUEST_METHOD'] == 'POST'): ?>
-            <div class="alert alert-success shadow-sm">Action Completed Successfully!</div>
-        <?php endif; ?> -->
-
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="table-card">
-                    <h3 class="mb-4 text-dark border-bottom pb-3">Product Inventory</h3>
+                    <h3 class="mb-4 text-dark border-bottom pb-3">My Orders</h3>
 
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead class="table-dark">
                                 <tr>
-                                    <th scope="col">Product</th>
-                                    <th scope="col" style="width: 30%;">Description</th>
-                                    <th scope="col">Price (Rs)</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Actions</th>
+                                    <th scope="col">Order Id</th>
+                                    <th scope="col">User Id</th>
+                                    <th scope="col">Total Amount</th>
+                                    <th scope="col">Payment Method</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                                <?php
+                                if (mysqli_num_rows($result) == 0) {
+                                    echo '<tr>
+                                             <td colspan="4" class="text-center text-danger fw-bold">
+                                                 No orders found
+                                            </td>
+                                        </tr>';
+                                }
+
+
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                ?>
                                     <tr>
-                                        <td class="fw-bold text-primary"><?php echo $row['name'] ?></td>
-
-                                        <td>
-                                            <small class="text-muted">
-                                                <?php echo $row['description'] . '...'; ?>
-                                            </small>
-                                        </td>
-
-                                        <td class="fw-bold"><?php echo $row['price'] ?></td>
-
-                                        <td>
-                                            <img src="images/<?php echo $row['image'] ?>" class="product-img" alt="Product">
-                                        </td>
-
-                                        <td>
-                                            <span class="badge bg-secondary"><?php echo $row['categorie_name'] ?></span>
-                                        </td>
-
-                                        <td>
-                                            <div class="action-btn-group">
-                                                <a class="btn btn-primary btn-sm-custom" href="update_product.php?product_id=<?php echo $row['id']; ?>">
-                                                    <i class="fa-solid fa-pen"></i> Edit
-                                                </a>
-                                                <a class="btn btn-danger btn-sm-custom" href="delete_product.php?product_id=<?php echo $row['id']; ?>">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </a>
-                                            </div>
-                                        </td>
+                                        <td class="fw-bold text-primary"><?php echo $row['order_id']; ?></td>
+                                        <td class="fw-bold text-primary"><?php echo $row['user_id']; ?></td>
+                                        <td class="fw-bold text-primary"><?php echo $row['total_amount']; ?></td>
+                                        <td class="fw-bold text-primary"><?php echo $row['payment_method']; ?></td>
                                     </tr>
                                 <?php } ?>
                             </tbody>

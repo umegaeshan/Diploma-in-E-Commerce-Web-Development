@@ -136,10 +136,12 @@ if (isset($_SESSION['user_id'])) {
                 <ul class="navbar-nav me-auto ms-4 mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="admin_dashbord.php">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link active" href="add_product.php">Add Products</a></li>
-                    <li class="nav-item"><a class="nav-link" href="view_order.php">View Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link" href="view_products.php">View Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin_orders.php">Admin Orders</a></li>
                 </ul>
                 <div class="d-flex align-items-center gap-2">
                     <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
+                    <a href="admin_profile.php" class="btn btn-outline-warning"><i class="fa-solid fa-user fa-xl" style="color: #FFD43B;"></i></a>
                 </div>
             </div>
         </div>
