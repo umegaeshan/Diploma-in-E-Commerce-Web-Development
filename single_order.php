@@ -16,31 +16,39 @@ if (isset($_SESSION['user_id'])) {
         if (!$result) {
             echo "<h1> Error {$conn->error}</h1> ";
         } else {
+            $order_id = mysqli_insert_id($conn);
+            $payment_method = "cashon";
+            $sql_payment = "INSERT INTO payments(order_id,user_id,payment_method)VALUES('$order_id','$user_id','$payment_method')";
+            $result_payment = mysqli_query($conn, $sql_payment);
+
+            if (!$result_payment) {
+                echo "<h1> Error {$conn->error} </h1>";
+            }
+
             echo '
-    <!-- SUCCESS MODAL -->
-    <div class="modal fade show" style="display:block;" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content text-center">
+            <!-- SUCCESS MODAL -->
+            <div class="modal fade show" style="display:block;" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                     <div class="modal-content text-center">
 
-                <div class="modal-header border-0">
-                    <h5 class="modal-title w-100 text-success">Success</h5>
+                        <div class="modal-header border-0">
+                             <h5 class="modal-title w-100 text-success">Success</h5>
+                        </div>
+
+                        <div class="modal-body">
+                            <p>Order added successfully!</p>
+                        </div>
+
+                        <div class="modal-footer border-0 justify-content-center">
+                            <a href="single_order.php" class="btn btn-success">OK</a>
+                        </div>
+
+                    </div>
                 </div>
-
-                <div class="modal-body">
-                    <p>Order added successfully!</p>
-                </div>
-
-                <div class="modal-footer border-0 justify-content-center">
-                    <a href="single_order.php" class="btn btn-success">OK</a>
-                </div>
-
             </div>
-        </div>
-    </div>
 
-    <!-- MODAL BACKDROP -->
-    <div class="modal-backdrop fade show"></div>
-    ';
+            <!-- MODAL BACKDROP -->
+            <div class="modal-backdrop fade show"></div> ';
         }
     }
 } else {
