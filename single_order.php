@@ -3,25 +3,50 @@ session_start();
 include_once 'core/init.php';
 
 if (isset($_SESSION['user_id'])) {
-    if (isset($_GET['user_id'], $_GET['priduct_id'], $_GET['product_price'])) {
-        $user_id = $_GET['user_id'];
-        $product_id = $_GET['product_id'];
-        $product_price = $_GET['product_price'];
+    if (isset($_GET['user_id'], $_GET['product_id'], $_GET['product_price'])) {
+        $user_id = (int) $_GET['user_id'];
+        $product_id = (int) $_GET['product_id'];
+        $product_price = (int) $_GET['product_price'];
 
 
-        $sql = "INSERT INTO single_order(user_id,product_id,total_amount) VALUES('$user_id','$product_id',' $product_price')";
+        $sql = "INSERT INTO single_order (user_id, product_id, total_amount) VALUES('$user_id', '$product_id', ' $product_price')";
 
         $result = mysqli_query($conn, $sql);
 
         if (!$result) {
             echo "<h1> Error {$conn->error}</h1> ";
         } else {
-            echo "<h1> Order Added Succesfuly !! </h1> ";
+            echo '
+    <!-- SUCCESS MODAL -->
+    <div class="modal fade show" style="display:block;" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+
+                <div class="modal-header border-0">
+                    <h5 class="modal-title w-100 text-success">Success</h5>
+                </div>
+
+                <div class="modal-body">
+                    <p>Order added successfully!</p>
+                </div>
+
+                <div class="modal-footer border-0 justify-content-center">
+                    <a href="single_order.php" class="btn btn-success">OK</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL BACKDROP -->
+    <div class="modal-backdrop fade show"></div>
+    ';
         }
     }
 } else {
     header:
     ("Location:index.php");
+    exit();
 }
 
 ?>
@@ -138,6 +163,19 @@ if (isset($_SESSION['user_id'])) {
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Order success alert  -->
+    <script>
+        setTimeout(() => {
+            const alert = document.getElementById('successAlert');
+            if (alert) {
+                alert.classList.remove('show');
+                alert.classList.add('fade');
+                alert.style.display = 'none';
+            }
+        }, 2000); // 2000ms = 2 seconds
+    </script>
+
 </body>
 
 </html>

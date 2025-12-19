@@ -158,15 +158,22 @@ if (isset($_GET['category_name'])) {
 
                             <div class="modal-footer">
                                 <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <?php if (isset($_SESSION['user_id'])) {  ?>
-                                    <a href="single_order.php?user_id= <?php echo $_SESSION['user_id'] ?>&product_id= <?php echo $row_product_category['product_id'] ?>&product_price= <?php echo $row_product_category['price'] ?>">Add To Cart</a>
+
+                                <?php if (isset($_SESSION['user_id'])) {
+                                    // logic is correct, but PHP is breaking because of mixed HTML + PHP inside the href on your server.
+                                    $cart_url = "single_order.php?user_id=" . $_SESSION['user_id'] .
+                                        "&product_id=" . $row_product_category['id'] .
+                                        "&product_price=" . $row_product_category['price'];
+                                ?>
+                                    <a href="<?php echo $cart_url; ?>" class="btn btn-warning">
+                                        Add To Cart
+                                    </a>
                                 <?php } ?>
-                                <?php if (!isset($_SESSION['user_id'])) {  ?>
+
+                                <?php if (!isset($_SESSION['user_id'])) { ?>
                                     <a href="register.php" class="btn btn-warning">Add To Cart</a>
                                 <?php } ?>
-
                             </div>
-
                         </div>
                     </div>
                 </div>
