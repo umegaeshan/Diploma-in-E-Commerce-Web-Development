@@ -51,7 +51,7 @@ if (isset($_SESSION['user_id'])) {
                         </div>
 
                         <div class="modal-footer border-0 justify-content-center">
-                            <a href="single_order.php" class="btn btn-success">OK</a>
+                            <a href="user_orders.php" class="btn btn-success">OK</a>
                         </div>
 
                     </div>
@@ -115,54 +115,6 @@ if (isset($_SESSION['user_id'])) {
         </div>
     </nav>
 
-    <div class="container main-container mt-5">
-
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="table-card">
-                    <h3 class="mb-4 text-dark border-bottom pb-3">My Orders </h3>
-
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Total Price (Rs)</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <td class="fw-bold text-primary"></td>
-
-                                <td class="fw-bold"></td>
-
-                                <td>
-                                    <span class="badge bg-secondary"></span>
-                                </td>
-
-                                <td>
-                                    <div class="action-btn-group">
-                                        <a class="btn btn-primary btn-sm-custom" href="update_product.php?product_id=<?php echo $row['id']; ?>">
-                                            <i class="fa-solid fa-pen"></i> Edit
-                                        </a>
-                                        <a class="btn btn-danger btn-sm-custom" href="delete_product.php?product_id=<?php echo $row['id']; ?>">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
 
 
     <footer class="footer">

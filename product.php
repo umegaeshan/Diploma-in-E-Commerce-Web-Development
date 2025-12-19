@@ -60,7 +60,8 @@ if (isset($_GET['category_name'])) {
                 <?php } else { ?>
                     <div class="d-flex gap-2">
                         <a href="logout_user.php" class="btn btn-sm btn-danger">Log Out</a>
-                        <a href="single_order.php" class="btn btn-outline-warning"><i class="fa-solid fa-cart-shopping fa-xl" style="color:rgb(162, 128, 7);"></i></a>
+                        <a href="user_orders.php" class="btn btn-outline-warning"><i class="fa-solid fa-cart-shopping fa-xl" style="color:rgb(162, 128, 7);"></i></a>
+                        <a href="user_profile.php" class="btn btn-outline-warning"><i class="fa-solid fa-user fa-xl" style="color: #FFD43B;"></i></a>
                     </div>
                 <?php } ?>
             </div>
@@ -185,13 +186,35 @@ if (isset($_GET['category_name'])) {
         </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="footer bg-dark text-light py-4">
-        <div class="container text-center">
-            <small>&copy; 2025 ODARA. All Rights Reserved.</small>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>About ODARA</h5>
+                    <p class="footer-text">Premium online fragrance shop. We deliver happiness with every scent. Quality ingredients and best service guaranteed.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled footer-text">
+                        <li><a href="index.php" class="text-decoration-none text-muted">Home</a></li>
+                        <li><a href="product.php" class="text-decoration-none text-muted">Shop Now</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact</h5>
+                    <p class="footer-text">
+                        <i class="fa-solid fa-envelope me-2"></i> support@odara.com<br>
+                        <i class="fa-solid fa-phone me-2"></i> +94 77 123 4567<br>
+                        <i class="fa-solid fa-location-dot me-2"></i> Colombo, Sri Lanka
+                    </p>
+                </div>
+            </div>
+            <div class="text-center pt-3 border-top border-secondary">
+                <small>&copy; 2025 ODARA. All Rights Reserved.</small>
+            </div>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
