@@ -63,11 +63,9 @@ if (isset($_SESSION['user_id'])) {
         }
     }
 } else {
-    header:
-    ("Location:index.php");
+    header("Location: index.php");
     exit();
 }
-
 ?>
 
 
@@ -106,7 +104,7 @@ if (isset($_SESSION['user_id'])) {
                     </div>
                 <?php } else { ?>
                     <div class="d-flex gap-2">
-                        <a href="logout_user.php" class="btn btn-sm btn-danger">Log Out</a>
+                        <a href="logout.php" class="btn btn-sm btn-danger">Log Out</a>
                         <a href="single_order.php" class="btn btn-outline-warning"><i class="fa-solid fa-cart-shopping fa-xl active" style="color:rgb(162, 128, 7);"></i></a>
                     </div>
                 <?php } ?>

@@ -12,7 +12,7 @@ if (isset($_SESSION['user_id'])) {
 
         if (isset($_POST['submit'])) {
             $product_name = $_POST['product_name'];
-            $discreption = $_POST['description'];
+            $discreption = $_POST['discreption'];
             $price = $_POST['price'];
             $stock_quantity = $_POST['stock_quantity'];
             $image = $_FILES['image']['name'];
@@ -25,7 +25,7 @@ if (isset($_SESSION['user_id'])) {
             $rowCat = mysqli_fetch_assoc($getCat);
             $categorie_name = $rowCat['name'];
 
-            $sql = "INSERT INTO product (name,description,price,stock_quantity,image,categorie_id,categorie_name)
+            $sql = "INSERT INTO product (name,discreption,price,stock_quantity,image,categorie_id,categorie_name)
                     VALUES ('$product_name','$discreption','$price','$stock_quantity','$image','$categorie_id','$categorie_name')";
 
             $result = mysqli_query($conn, $sql);
@@ -180,8 +180,8 @@ if (isset($_SESSION['user_id'])) {
                 </div>
 
                 <div class="mb-3">
-                    <label for="description" class="form-label">Description</label>
-                    <textarea name="description" id="description" class="form-control" rows="3" placeholder="Enter details about the product..." required></textarea>
+                    <label for="discription" class="form-label">Description</label>
+                    <textarea name="discreption" id="discreption" class="form-control" rows="3" placeholder="Enter details about the product..." required></textarea>
                 </div>
 
                 <div class="row">

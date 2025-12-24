@@ -41,7 +41,7 @@ include_once 'core/init.php';
                     </div>
                 <?php } else { ?>
                     <div class="d-flex gap-2">
-                        <a href="logout_user.php" class="btn btn-sm btn-danger">Log Out</a>
+                        <a href="logout.php" class="btn btn-sm btn-danger">Log Out</a>
                         <a href="user_orders.php" class="btn btn-outline-warning"><i class="fa-solid fa-cart-shopping fa-xl" style="color:rgb(162, 128, 7);"></i></a>
                         <a href="user_profile.php" class="btn btn-outline-warning"><i class="fa-solid fa-user fa-xl" style="color: #FFD43B;"></i></a>
                     </div>
