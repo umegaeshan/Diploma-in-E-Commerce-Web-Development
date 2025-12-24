@@ -44,27 +44,27 @@ $user = mysqli_fetch_assoc($result);
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.php">ODARA</a>
+            <a class="navbar-brand" href="index.php">ODARA <span class="badge bg-light text-dark" style="font-size: 10px; vertical-align: top;">ADMIN</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link " href="admin_dashbord.php">Dashboard</a></li>
+                <ul class="navbar-nav me-auto ms-4 mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="admin_dashbord.php">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="add_product.php">Add Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="view_products.php">View Inventory</a></li>
                     <li class="nav-item"><a class="nav-link" href="admin_orders.php">Addmin Orders</a></li>
+
                 </ul>
                 <div class="d-flex gap-2">
                     <a href="logout.php" class="btn btn-sm btn-danger">Log Out</a>
-                    <a href="admin_profile.php" class="btn btn-outline-warning active"><i class="fa-solid fa-user fa-xl" style="color:rgb(116, 92, 4);"></i></a>
+                    <a href="admin_profile.php" class="btn btn-outline-warning"><i class="fa-solid fa-user fa-xl" style="color: #FFD43B;"></i></a>
                 </div>
-
-
             </div>
         </div>
     </nav>
+
 
     <div class="container d-flex justify-content-center align-items-center min-vh-20">
 
