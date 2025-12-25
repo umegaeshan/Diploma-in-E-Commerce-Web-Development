@@ -9,10 +9,6 @@ if (isset($_SESSION['user_id'])) {
 
         $user_id = (int) $_SESSION['user_id'];
 
-        // *** FIXED SQL QUERY BASED ON YOUR SCREENSHOTS ***
-        // 1. Table 'single_order' aliased as 'ord'
-        // 2. Table 'product' aliased as 'prod'
-        // 3. We JOIN on ord.product_id = prod.id
         $sql = "SELECT 
                     ord.id AS order_id, 
                     ord.product_quantity,
@@ -22,8 +18,7 @@ if (isset($_SESSION['user_id'])) {
                     prod.description,
                     prod.price
                 FROM single_order ord
-                JOIN product prod 
-                ON ord.product_id = prod.id
+                JOIN product prod ON ord.product_id = prod.id
                 WHERE ord.user_id = $user_id
                 ORDER BY ord.id DESC";
 
@@ -71,19 +66,14 @@ if (isset($_SESSION['user_id'])) {
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.php">ODARA</a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link " href="product.php">Product</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
                 </ul>
-
                 <?php if (!isset($_SESSION['user_id'])) { ?>
                     <div class="d-flex gap-2">
                         <a href="login.php" class="btn btn-outline-light">Log In</a>
@@ -106,6 +96,10 @@ if (isset($_SESSION['user_id'])) {
                 <div class="table-card">
                     <h3 class="mb-4 text-dark border-bottom pb-3">My Orders</h3>
 
+                    <?php if (isset($_GET['msg'])) { ?>
+                        <div class="alert alert-success"><?php echo $_GET['msg']; ?></div>
+                    <?php } ?>
+
                     <div class="table-responsive">
                         <table class="table table-hover align-middle">
                             <thead class="table-dark">
@@ -117,80 +111,42 @@ if (isset($_SESSION['user_id'])) {
                                     <th scope="col">Price</th>
                                     <th scope="col">Qty</th>
                                     <th scope="col">Total Amount</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 if (mysqli_num_rows($result) == 0) {
-                                    echo '<tr>
-                                             <td colspan="7" class="text-center text-danger fw-bold">
-                                                 No orders found
-                                             </td>
-                                         </tr>';
+                                    echo '<tr><td colspan="8" class="text-center text-danger fw-bold">No orders found</td></tr>';
                                 }
 
                                 while ($row = mysqli_fetch_assoc($result)) {
                                 ?>
                                     <tr>
                                         <td class="fw-bold text-primary">#<?php echo $row['order_id']; ?></td>
-
-                                        <td>
-                                            <img src="images/<?php echo $row['image']; ?>" alt="Product" class="product-thumb">
-                                        </td>
-
+                                        <td><img src="images/<?php echo $row['image']; ?>" alt="Product" class="product-thumb"></td>
                                         <td><?php echo $row['product_id']; ?></td>
+                                        <td><small class="text-muted"><?php echo substr($row['description'], 0, 60) . '...'; ?></small></td>
+                                        <td>Rs. <?php echo number_format($row['price'], 2); ?></td>
+                                        <td class="fw-bold text-center"><?php echo $row['product_quantity']; ?></td>
+                                        <td class="fw-bold text-success">Rs. <?php echo number_format($row['total_amount'], 2); ?></td>
 
                                         <td>
-                                            <small class="text-muted">
-                                                <?php echo substr($row['description'], 0, 60) . '...'; ?>
-                                            </small>
-                                        </td>
-
-                                        <td>Rs. <?php echo number_format($row['price'], 2); ?></td>
-
-                                        <td class="fw-bold text-center"><?php echo $row['product_quantity']; ?></td>
-
-                                        <td class="fw-bold text-success">
-                                            Rs. <?php echo number_format($row['total_amount'], 2); ?>
+                                            <a href="delete_product.php?id=<?php echo $row['order_id']; ?>"
+                                                class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Are you sure you want to delete this order?');">
+                                                <i class="fa-solid fa-trash"></i> Delete
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5>About ODARA</h5>
-                    <p class="footer-text">Premium online fragrance shop. We deliver happiness with every scent.</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled footer-text">
-                        <li><a href="index.php" class="text-decoration-none text-muted">Home</a></li>
-                        <li><a href="product.php" class="text-decoration-none text-muted">Shop Now</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Contact</h5>
-                    <p class="footer-text">
-                        <i class="fa-solid fa-envelope me-2"></i> support@odara.com<br>
-                        <i class="fa-solid fa-phone me-2"></i> +94 77 123 4567
-                    </p>
-                </div>
-            </div>
-            <div class="text-center pt-3 border-top border-secondary">
-                <small>&copy; 2025 ODARA. All Rights Reserved.</small>
-            </div>
-        </div>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

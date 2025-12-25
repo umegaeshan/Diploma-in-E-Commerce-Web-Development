@@ -30,7 +30,7 @@ if (isset($_SESSION['user_id'])) {
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.php">ODARA <span class="badge bg-light text-dark" style="font-size: 10px; vertical-align: top;">ADMIN</span></a>
+            <a class="navbar-brand" href="admin_dashbord.php">ODARA <span class="badge bg-light text-dark" style="font-size: 10px; vertical-align: top;">ADMIN</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
             </button>

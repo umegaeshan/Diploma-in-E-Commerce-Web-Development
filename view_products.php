@@ -7,8 +7,6 @@ if (isset($_SESSION['user_id'])) {
 
         $sql = "SELECT * FROM product";
         $result = mysqli_query($conn, $sql);
-
-        // Moved the success/error message inside the HTML body for better layout
     } else {
         echo "Go for user dashbord";
         exit();
@@ -32,25 +30,21 @@ if (isset($_SESSION['user_id'])) {
     <style>
         body {
             background-color: #f8f9fa;
-            /* Soft gray background */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        /* Navbar Styling */
         .navbar {
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Main Container */
         .main-container {
             flex: 1;
             padding: 40px 0;
         }
 
-        /* Card/Table Styling */
         .table-card {
             background: #ffffff;
             border-radius: 15px;
@@ -68,7 +62,6 @@ if (isset($_SESSION['user_id'])) {
             font-weight: 500;
             text-transform: uppercase;
             font-size: 0.85rem;
-            letter-spacing: 0.5px;
             padding: 15px;
             border: none;
         }
@@ -80,7 +73,6 @@ if (isset($_SESSION['user_id'])) {
             color: #555;
         }
 
-        /* Image Styling */
         .product-img {
             width: 60px;
             height: 60px;
@@ -94,7 +86,6 @@ if (isset($_SESSION['user_id'])) {
             transform: scale(1.5);
         }
 
-        /* Button Styling */
         .action-btn-group {
             display: flex;
             gap: 8px;
@@ -106,7 +97,6 @@ if (isset($_SESSION['user_id'])) {
             border-radius: 6px;
         }
 
-        /* Footer Styling */
         .footer {
             background-color: #212529;
             color: #adb5bd;
@@ -131,7 +121,7 @@ if (isset($_SESSION['user_id'])) {
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.php">ODARA <span class="badge bg-warning text-dark" style="font-size: 10px; vertical-align: top;">ADMIN</span></a>
+            <a class="navbar-brand fw-bold" href="admin_dashbord.php">ODARA <span class="badge bg-warning text-dark" style="font-size: 10px; vertical-align: top;">ADMIN</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -140,7 +130,7 @@ if (isset($_SESSION['user_id'])) {
                 <ul class="navbar-nav me-auto ms-4 mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="admin_dashbord.php">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="add_product.php">Add Products</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="view_order.php">View Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="admin_inventory.php">View Inventory</a></li>
                     <li class="nav-item"><a class="nav-link" href="admin_orders.php">View Orders</a></li>
                 </ul>
 
@@ -157,13 +147,6 @@ if (isset($_SESSION['user_id'])) {
     </nav>
 
     <div class="container main-container">
-
-        <!-- <?php if (isset($result) && !$result): ?>
-            <div class="alert alert-danger shadow-sm">Error: <?php echo $conn->error; ?></div>
-        <?php elseif (isset($result) && $_SERVER['REQUEST_METHOD'] == 'POST'): ?>
-            <div class="alert alert-success shadow-sm">Action Completed Successfully!</div>
-        <?php endif; ?> -->
-
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="table-card">
@@ -185,29 +168,18 @@ if (isset($_SESSION['user_id'])) {
                                 <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                                     <tr>
                                         <td class="fw-bold text-primary"><?php echo $row['name'] ?></td>
-
-                                        <td>
-                                            <small class="text-muted">
-                                                <?php echo $row['description'] . '...'; ?>
-                                            </small>
-                                        </td>
-
+                                        <td><small class="text-muted"><?php echo substr($row['description'], 0, 50) . '...'; ?></small></td>
                                         <td class="fw-bold"><?php echo $row['price'] ?></td>
-
-                                        <td>
-                                            <img src="images/<?php echo $row['image'] ?>" class="product-img" alt="Product">
-                                        </td>
-
-                                        <td>
-                                            <span class="badge bg-secondary"><?php echo $row['categorie_name'] ?></span>
-                                        </td>
-
+                                        <td><img src="images/<?php echo $row['image'] ?>" class="product-img" alt="Product"></td>
+                                        <td><span class="badge bg-secondary"><?php echo $row['categorie_name'] ?></span></td>
                                         <td>
                                             <div class="action-btn-group">
                                                 <a class="btn btn-primary btn-sm-custom" href="update_product.php?product_id=<?php echo $row['id']; ?>">
                                                     <i class="fa-solid fa-pen"></i> Edit
                                                 </a>
-                                                <a class="btn btn-danger btn-sm-custom" href="delete_product.php?product_id=<?php echo $row['id']; ?>">
+                                                <a class="btn btn-danger btn-sm-custom"
+                                                    href="admin_delete_product.php?product_id=<?php echo $row['id']; ?>"
+                                                    onclick="return confirm('Are you sure you want to delete this product?');">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </a>
                                             </div>
@@ -228,22 +200,20 @@ if (isset($_SESSION['user_id'])) {
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <h5>About ODARA</h5>
-                    <p class="footer-text">Premium online cake ordering shop. We deliver happiness with every slice. Quality ingredients and best service guaranteed.</p>
+                    <p class="footer-text">Premium online cake ordering shop. We deliver happiness with every slice.</p>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled footer-text">
-                        <li><a href="#" class="text-decoration-none text-muted">Dashboard</a></li>
-                        <li><a href="#" class="text-decoration-none text-muted">New Orders</a></li>
-                        <li><a href="#" class="text-decoration-none text-muted">Stock Management</a></li>
+                        <li><a href="admin_dashbord.php" class="text-decoration-none text-muted">Dashboard</a></li>
+                        <li><a href="admin_inventory.php" class="text-decoration-none text-muted">Stock Management</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h5>Contact</h5>
                     <p class="footer-text">
                         <i class="fa-solid fa-envelope me-2"></i> support@odara.com<br>
-                        <i class="fa-solid fa-phone me-2"></i> +94 77 123 4567<br>
-                        <i class="fa-solid fa-location-dot me-2"></i> Colombo, Sri Lanka
+                        <i class="fa-solid fa-phone me-2"></i> +94 77 123 4567
                     </p>
                 </div>
             </div>
