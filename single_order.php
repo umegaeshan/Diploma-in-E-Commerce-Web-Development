@@ -2,64 +2,39 @@
 session_start();
 include_once 'core/init.php';
 
+$order_success = false; // Flag to control success modal display
+
 if (isset($_SESSION['user_id'])) {
-    if (isset($_GET['user_id'], $_GET['product_id'], $_GET['product_price'])) {
+    if (isset($_GET['user_id'], $_GET['product_id'], $_GET['product_price'], $_GET['product_quantity'])) {
+
         $user_id = (int) $_GET['user_id'];
         $product_id = (int) $_GET['product_id'];
-        $total_amount = (int) $_GET['product_price'];
 
+        // Define price and quantity from URL
+        $product_price = (float) $_GET['product_price'];
+        $product_quantity = (int) $_GET['product_quantity'];
 
-        $sql = "INSERT INTO single_order (user_id, product_id, total_amount) VALUES('$user_id', '$product_id', ' $total_amount')";
+        // Calculate total amount
+        $total_amount = $product_price * $product_quantity;
 
-        $result = mysqli_query($conn, $sql);
+        // INSERT ORDER
+        // This matches your table columns: user_id, product_id, product_quantity, total_amount
+        $sql_order = "INSERT INTO single_order (user_id, product_id, product_quantity, total_amount) 
+                      VALUES ('$user_id', '$product_id', '$product_quantity', '$total_amount')";
 
-        if (!$result) {
-            echo "<h1> Error {$conn->error}</h1> ";
-        } else {
-            $order_id = mysqli_insert_id($conn);
-            $payment_method = "cashon";
-            $sql_payment = "INSERT INTO payments(order_id,user_id,total_amount,payment_method)VALUES('$order_id','$user_id','$total_amount ','$payment_method')";
-            $result_payment = mysqli_query($conn, $sql_payment);
+        $result_order = mysqli_query($conn, $sql_order);
 
-            if (!$result_payment) {
-                echo "<h1> Error {$conn->error} </h1>";
-            }
-
+        if ($result_order) {
+            // IF order was successful, UPDATE STOCK
             $sql_update_stock = "UPDATE product 
-                                 SET stock_quantity = stock_quantity - 1 
-                                 WHERE id =  $product_id";
+                                 SET stock_quantity = stock_quantity - $product_quantity
+                                 WHERE id = $product_id";
+            mysqli_query($conn, $sql_update_stock);
 
-            $result_update_stock = mysqli_query($conn, $sql_update_stock);
-
-            if (!$result_update_stock) {
-                die("Error: " . mysqli_error($conn));
-            }
-
-
-            echo '
-            <!-- SUCCESS MODAL -->
-            <div class="modal fade show" style="display:block;" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                     <div class="modal-content text-center">
-
-                        <div class="modal-header border-0">
-                             <h5 class="modal-title w-100 text-success">Success</h5>
-                        </div>
-
-                        <div class="modal-body">
-                            <p>Order added successfully!</p>
-                        </div>
-
-                        <div class="modal-footer border-0 justify-content-center">
-                            <a href="user_orders.php" class="btn btn-success">OK</a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- MODAL BACKDROP -->
-            <div class="modal-backdrop fade show"></div> ';
+            // Set success flag to true to show Modal
+            $order_success = true;
+        } else {
+            echo "<h1> Error: " . mysqli_error($conn) . "</h1>";
         }
     }
 } else {
@@ -68,14 +43,13 @@ if (isset($_SESSION['user_id'])) {
 }
 ?>
 
-
 <!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MY Oreders | ODARA</title>
+    <title>My Orders | ODARA</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/03c57d27b5.js" crossorigin="anonymous"></script>
@@ -83,18 +57,35 @@ if (isset($_SESSION['user_id'])) {
 
 <body>
 
+    <?php if ($order_success) { ?>
+        <div class="modal fade show" style="display:block; background-color: rgba(0,0,0,0.5);" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content text-center">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title w-100 text-success">Success</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Order added successfully!</p>
+                    </div>
+                    <div class="modal-footer border-0 justify-content-center">
+                        <a href="user_orders.php" class="btn btn-success">OK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.php">ODARA</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="product.php">Product</a></li>
-                    <li class="nav-item"><a class="nav-link " href="about.php">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
                 </ul>
                 <?php if (!isset($_SESSION['user_id'])) { ?>
@@ -108,12 +99,9 @@ if (isset($_SESSION['user_id'])) {
                         <a href="single_order.php" class="btn btn-outline-warning"><i class="fa-solid fa-cart-shopping fa-xl active" style="color:rgb(162, 128, 7);"></i></a>
                     </div>
                 <?php } ?>
-
             </div>
         </div>
     </nav>
-
-
 
     <footer class="footer">
         <div class="container">
@@ -144,21 +132,7 @@ if (isset($_SESSION['user_id'])) {
             </div>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Order success alert  -->
-    <script>
-        setTimeout(() => {
-            const alert = document.getElementById('successAlert');
-            if (alert) {
-                alert.classList.remove('show');
-                alert.classList.add('fade');
-                alert.style.display = 'none';
-            }
-        }, 2000); // 2000ms = 2 seconds
-    </script>
-
 </body>
 
 </html>

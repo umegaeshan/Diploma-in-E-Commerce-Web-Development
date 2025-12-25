@@ -7,41 +7,60 @@ $message = ""; // Variable to store alerts
 if (isset($_SESSION['user_id'])) {
     if ($_SESSION['user_role'] == "admin") {
 
+        // Fetch categories for the dropdown menu
         $sql1 = "SELECT * FROM categories";
         $result1 = mysqli_query($conn, $sql1);
 
+        // Check if form was submitted
         if (isset($_POST['submit'])) {
-            $product_name = $_POST['product_name'];
-            $discreption = $_POST['discreption'];
-            $price = $_POST['price'];
-            $stock_quantity = $_POST['stock_quantity'];
+
+            // --- FIXED SECTION START ---
+            // using (?? '') prevents "Undefined array key" warning if data is missing
+            // mysqli_real_escape_string prevents database errors if text contains apostrophes (')
+
+            $product_name = mysqli_real_escape_string($conn, $_POST['product_name'] ?? '');
+
+            // This line caused your specific error. Fixed by adding "?? ''"
+            $description = mysqli_real_escape_string($conn, $_POST['description'] ?? '');
+
+            $price = $_POST['price'] ?? 0;
+            $stock_quantity = $_POST['stock_quantity'] ?? 0;
+            $categorie_id = $_POST['categorie_id'] ?? 0;
+
+            // Image handling
             $image = $_FILES['image']['name'];
             $temp_location = $_FILES['image']['tmp_name'];
             $upload_location = "images/";
-            $categorie_id = $_POST['categorie_id'];
 
-            // Get category name
+            // --- FIXED SECTION END ---
+
+            // Get category name based on the selected ID
             $getCat = mysqli_query($conn, "SELECT name FROM categories WHERE id = '$categorie_id'");
             $rowCat = mysqli_fetch_assoc($getCat);
             $categorie_name = $rowCat['name'];
 
-            $sql = "INSERT INTO product (name,discreption,price,stock_quantity,image,categorie_id,categorie_name)
-                    VALUES ('$product_name','$discreption','$price','$stock_quantity','$image','$categorie_id','$categorie_name')";
+            // Insert data into database
+            $sql = "INSERT INTO product (name, description, price, stock_quantity, image, categorie_id, categorie_name)
+                    VALUES ('$product_name','$description','$price','$stock_quantity','$image','$categorie_id','$categorie_name')";
 
             $result = mysqli_query($conn, $sql);
 
             if (!$result) {
+                // Show error if SQL fails
                 $message = "<div class='alert alert-danger'>Error !! {$conn->error}</div>";
             } else {
+                // Move the uploaded image to the folder
                 move_uploaded_file($temp_location, $upload_location . $image);
                 $message = "<div class='alert alert-success'>Product Added Successfully !!</div>";
             }
         }
     } else {
+        // Redirect non-admins
         echo "Go for user dashbord";
         exit();
     }
 } else {
+    // Redirect if not logged in
     header("Location:index.php");
     exit();
 }
@@ -84,7 +103,6 @@ if (isset($_SESSION['user_id'])) {
             padding: 40px;
             width: 100%;
             max-width: 700px;
-            /* Limits width so it looks good */
         }
 
         .form-label {
@@ -101,7 +119,6 @@ if (isset($_SESSION['user_id'])) {
 
         .form-control:focus {
             box-shadow: 0 0 0 3px rgba(13, 202, 240, 0.25);
-            /* Info color focus */
             border-color: #0dcaf0;
         }
 
@@ -137,7 +154,7 @@ if (isset($_SESSION['user_id'])) {
                     <li class="nav-item"><a class="nav-link" href="admin_dashbord.php">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link active" href="add_product.php">Add Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="view_products.php">View Inventory</a></li>
-                    <li class="nav-item"><a class="nav-link" href="admin_orders.php">Admin Orders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin_orders.php">View Orders</a></li>
                 </ul>
                 <div class="d-flex align-items-center gap-2">
                     <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
@@ -169,7 +186,6 @@ if (isset($_SESSION['user_id'])) {
                         <label for="categorie" class="form-label">Category</label>
                         <select name="categorie_id" id="categorie" class="form-select" required>
                             <?php
-                            // Reset pointer just in case
                             if (mysqli_num_rows($result1) > 0) {
                                 while ($row = mysqli_fetch_assoc($result1)): ?>
                                     <option value="<?= $row['id']; ?>"><?= $row['name']; ?></option>
@@ -180,8 +196,8 @@ if (isset($_SESSION['user_id'])) {
                 </div>
 
                 <div class="mb-3">
-                    <label for="discription" class="form-label">Description</label>
-                    <textarea name="discreption" id="discreption" class="form-control" rows="3" placeholder="Enter details about the product..." required></textarea>
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" id="description" class="form-control" rows="3" placeholder="Enter details about the product..." required></textarea>
                 </div>
 
                 <div class="row">

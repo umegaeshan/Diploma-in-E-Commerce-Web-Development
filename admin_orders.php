@@ -26,7 +26,7 @@ if (isset($_SESSION['user_id'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>View Products | ODARA Admin</title>
+    <title>View Orders | ODARA Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/03c57d27b5.js" crossorigin="anonymous"></script>
 
@@ -141,8 +141,8 @@ if (isset($_SESSION['user_id'])) {
                 <ul class="navbar-nav me-auto ms-4 mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="admin_dashbord.php">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="add_product.php">Add Products</a></li>
-                    <li class="nav-item"><a class="nav-link " href="view_order.php">View Inventory</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="admin_orders.php">Addmin Orders</a></li>
+                    <li class="nav-item"><a class="nav-link " href="view_products.php">View Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="admin_orders.php">View Orders</a></li>
                 </ul>
 
                 <div class="d-flex align-items-center gap-2">

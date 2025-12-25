@@ -141,7 +141,7 @@ if (isset($_SESSION['user_id'])) {
                     <li class="nav-item"><a class="nav-link" href="admin_dashbord.php">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="add_product.php">Add Products</a></li>
                     <li class="nav-item"><a class="nav-link active" href="view_order.php">View Inventory</a></li>
-                    <li class="nav-item"><a class="nav-link" href="admin_orders.php">Addmin Orders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin_orders.php">View Orders</a></li>
                 </ul>
 
                 <div class="d-flex align-items-center gap-2">
