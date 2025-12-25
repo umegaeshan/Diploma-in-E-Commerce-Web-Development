@@ -3,15 +3,35 @@ require_once 'core/init.php';
 session_start();
 
 if (isset($_SESSION['user_id'])) {
+
+    // 1. Check if user is ADMIN
     if ($_SESSION['user_role'] == "admin") {
 
+        // 2. SQL: Select ALL orders from 'single_order' + product info
+        //    Added 'ord.user_id' to the list
+        $sql = "SELECT 
+                    ord.id AS order_id, 
+                    ord.user_id,
+                    ord.product_quantity,
+                    ord.product_id,
+                    ord.total_amount,
+                    prod.image,
+                    prod.description,
+                    prod.price,
+                    prod.name AS product_name
+                FROM single_order ord
+                JOIN product prod ON ord.product_id = prod.id
+                ORDER BY ord.id DESC";
 
-        $sql = "SELECT * FROM payments ";
         $result = mysqli_query($conn, $sql);
 
-        // Moved the success/error message inside the HTML body for better layout
+        if (!$result) {
+            echo "<h1> Database Error: " . mysqli_error($conn) . "</h1>";
+            exit();
+        }
     } else {
-        echo "Go for user dashbord";
+        // If not admin, redirect
+        header("Location: user_profile.php");
         exit();
     }
 } else {
@@ -26,104 +46,40 @@ if (isset($_SESSION['user_id'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>View Orders | ODARA Admin</title>
+    <title>Manage Orders | ODARA Admin</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/03c57d27b5.js" crossorigin="anonymous"></script>
 
     <style>
         body {
             background-color: #f8f9fa;
-            /* Soft gray background */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            font-family: sans-serif;
         }
 
-        /* Navbar Styling */
-        .navbar {
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Main Container */
         .main-container {
-            flex: 1;
             padding: 40px 0;
+            min-height: 80vh;
         }
 
-        /* Card/Table Styling */
         .table-card {
             background: #ffffff;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             padding: 20px;
-            overflow: hidden;
+        }
+
+        .product-thumb {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #ddd;
         }
 
         .table thead {
             background-color: #212529;
             color: white;
-        }
-
-        .table th {
-            font-weight: 500;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            padding: 15px;
-            border: none;
-        }
-
-        .table td {
-            vertical-align: middle;
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-            color: #555;
-        }
-
-        /* Image Styling */
-        .product-img {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            transition: transform 0.2s;
-        }
-
-        .product-img:hover {
-            transform: scale(1.5);
-        }
-
-        /* Button Styling */
-        .action-btn-group {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn-sm-custom {
-            padding: 5px 10px;
-            font-size: 0.8rem;
-            border-radius: 6px;
-        }
-
-        /* Footer Styling */
-        .footer {
-            background-color: #212529;
-            color: #adb5bd;
-            padding: 40px 0 20px;
-            margin-top: auto;
-        }
-
-        .footer h5 {
-            color: #fff;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
-
-        .footer-text {
-            font-size: 0.9rem;
-            line-height: 1.6;
         }
     </style>
 </head>
@@ -132,67 +88,79 @@ if (isset($_SESSION['user_id'])) {
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="admin_dashbord.php">ODARA <span class="badge bg-warning text-dark" style="font-size: 10px; vertical-align: top;">ADMIN</span></a>
+            <a class="navbar-brand fw-bold" href="index.php">ODARA <span class="badge bg-warning text-dark" style="font-size: 10px; vertical-align: top;">ADMIN</span></a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav me-auto ms-4 mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto ms-4">
                     <li class="nav-item"><a class="nav-link" href="admin_dashbord.php">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="add_product.php">Add Products</a></li>
-                    <li class="nav-item"><a class="nav-link " href="view_products.php">View Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin_inventory.php">View Inventory</a></li>
                     <li class="nav-item"><a class="nav-link active" href="admin_orders.php">View Orders</a></li>
                 </ul>
 
-                <div class="d-flex align-items-center gap-2">
-                    <form class="d-flex me-2" role="search">
-                        <input class="form-control form-control-sm me-2" type="search" placeholder="Search..." aria-label="Search" />
-                        <button class="btn btn-sm btn-outline-info" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
+                <div class="d-flex gap-2">
                     <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
-                    <a href="admin_profile.php" class="btn btn-outline-warning"><i class="fa-solid fa-user fa-xl" style="color: #FFD43B;"></i></a>
                 </div>
             </div>
         </div>
     </nav>
 
-
-
     <div class="container main-container">
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="table-card">
-                    <h3 class="mb-4 text-dark border-bottom pb-3">My Orders</h3>
+                    <h3 class="mb-4 text-dark border-bottom pb-3">Customer Orders</h3>
 
                     <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover align-middle">
                             <thead class="table-dark">
                                 <tr>
-                                    <th scope="col">Order Id</th>
-                                    <th scope="col">User Id</th>
-                                    <th scope="col">Total Amount</th>
-                                    <th scope="col">Payment Method</th>
+                                    <th scope="col">Order ID</th>
+                                    <th scope="col">User ID</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Product Info</th>
+                                    <th scope="col">Qty</th>
+                                    <th scope="col">Total (Rs)</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 if (mysqli_num_rows($result) == 0) {
-                                    echo '<tr>
-                                             <td colspan="4" class="text-center text-danger fw-bold">
-                                                 No orders found
-                                            </td>
-                                        </tr>';
+                                    echo '<tr><td colspan="7" class="text-center text-danger fw-bold">No orders found</td></tr>';
                                 }
-
 
                                 while ($row = mysqli_fetch_assoc($result)) {
                                 ?>
                                     <tr>
-                                        <td class="fw-bold text-primary"><?php echo $row['order_id']; ?></td>
-                                        <td class="fw-bold text-primary"><?php echo $row['user_id']; ?></td>
-                                        <td class="fw-bold text-primary"><?php echo $row['total_amount']; ?></td>
-                                        <td class="fw-bold text-primary"><?php echo $row['payment_method']; ?></td>
+                                        <td class="fw-bold text-primary">#<?php echo $row['order_id']; ?></td>
+
+                                        <td class="fw-bold text-dark">
+                                            <span class="badge bg-info text-dark">User #<?php echo $row['user_id']; ?></span>
+                                        </td>
+
+                                        <td><img src="images/<?php echo $row['image']; ?>" alt="Product" class="product-thumb"></td>
+
+                                        <td>
+                                            <strong>ID: <?php echo $row['product_id']; ?></strong><br>
+                                            <small class="text-muted"><?php echo substr($row['description'], 0, 40) . '...'; ?></small>
+                                        </td>
+
+                                        <td class="fw-bold text-center"><?php echo $row['product_quantity']; ?></td>
+
+                                        <td class="fw-bold text-success"><?php echo number_format($row['total_amount'], 2); ?></td>
+
+                                        <td>
+                                            <a href="admin_delete_order.php?id=<?php echo $row['order_id']; ?>"
+                                                class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Are you sure you want to delete this customer order?');">
+                                                <i class="fa-solid fa-trash"></i> Delete
+                                            </a>
+                                        </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>
@@ -203,36 +171,6 @@ if (isset($_SESSION['user_id'])) {
             </div>
         </div>
     </div>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5>About ODARA</h5>
-                    <p class="footer-text">Premium online cake ordering shop. We deliver happiness with every slice. Quality ingredients and best service guaranteed.</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled footer-text">
-                        <li><a href="#" class="text-decoration-none text-muted">Dashboard</a></li>
-                        <li><a href="#" class="text-decoration-none text-muted">New Orders</a></li>
-                        <li><a href="#" class="text-decoration-none text-muted">Stock Management</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Contact</h5>
-                    <p class="footer-text">
-                        <i class="fa-solid fa-envelope me-2"></i> support@odara.com<br>
-                        <i class="fa-solid fa-phone me-2"></i> +94 77 123 4567<br>
-                        <i class="fa-solid fa-location-dot me-2"></i> Colombo, Sri Lanka
-                    </p>
-                </div>
-            </div>
-            <div class="text-center pt-3 border-top border-secondary">
-                <small>&copy; 2025 ODARA. All Rights Reserved.</small>
-            </div>
-        </div>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

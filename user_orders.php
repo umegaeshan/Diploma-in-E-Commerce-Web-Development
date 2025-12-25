@@ -69,10 +69,13 @@ if (isset($_SESSION['user_id'])) {
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link " href="product.php">Product</a></li>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="product.php">Product</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
                 </ul>
                 <?php if (!isset($_SESSION['user_id'])) { ?>
                     <div class="d-flex gap-2">
@@ -82,10 +85,12 @@ if (isset($_SESSION['user_id'])) {
                 <?php } else { ?>
                     <div class="d-flex gap-2">
                         <a href="logout.php" class="btn btn-sm btn-danger">Log Out</a>
-                        <a href="user_orders.php" class="btn btn-outline-warning active"><i class="fa-solid fa-cart-shopping fa-xl" style="color:rgb(162, 128, 7);"></i></a>
+                        <a href="user_orders.php" class="btn btn-outline-warning"><i class="fa-solid fa-cart-shopping fa-xl" style="color:rgb(162, 128, 7);"></i></a>
                         <a href="user_profile.php" class="btn btn-outline-warning"><i class="fa-solid fa-user fa-xl" style="color: #FFD43B;"></i></a>
                     </div>
                 <?php } ?>
+
+
             </div>
         </div>
     </nav>
@@ -124,11 +129,17 @@ if (isset($_SESSION['user_id'])) {
                                 ?>
                                     <tr>
                                         <td class="fw-bold text-primary">#<?php echo $row['order_id']; ?></td>
+
                                         <td><img src="images/<?php echo $row['image']; ?>" alt="Product" class="product-thumb"></td>
+
                                         <td><?php echo $row['product_id']; ?></td>
+
                                         <td><small class="text-muted"><?php echo substr($row['description'], 0, 60) . '...'; ?></small></td>
+
                                         <td>Rs. <?php echo number_format($row['price'], 2); ?></td>
+
                                         <td class="fw-bold text-center"><?php echo $row['product_quantity']; ?></td>
+
                                         <td class="fw-bold text-success">Rs. <?php echo number_format($row['total_amount'], 2); ?></td>
 
                                         <td>
