@@ -102,26 +102,30 @@ include_once 'core/init.php';
             <div class="col-md-7">
                 <div class="content-card">
                     <h4 class="mb-4 fw-bold">Send us a Message</h4>
-                    <form>
+                    <form action="https://formsubmit.co/umegaeshan@gmail.com" method="post">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="name" class="form-label">Your Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="John Doe">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="John Doe">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="email" class="form-label">Your Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="subject" class="form-label">Subject</label>
-                            <input type="text" class="form-control" id="subject" placeholder="Order Inquiry">
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Order Inquiry">
                         </div>
 
                         <div class="mb-4">
                             <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" rows="5" placeholder="How can we help you?"></textarea>
+                            <textarea class="form-control" id="message" rows="5" name="msg" placeholder="How can we help you?"></textarea>
+                        </div>
+
+                        <div class="mb-4">
+                            <input type="hidden" name="_captcha" value="false">
                         </div>
 
                         <div class="d-grid">
