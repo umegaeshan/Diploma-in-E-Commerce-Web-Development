@@ -59,21 +59,21 @@ require_once 'core/init.php' ?>
 		</div>
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img src="images\banner3.jpg" class="d-block w-100" alt="...">
+				<img src="images\1663.jpg" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>First slide label</h5>
 					<p>Some representative placeholder content for the first slide.</p>
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img src="images\banner5.jpg" class="d-block w-100" alt="...">
+				<img src="images\2063.jpg" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>Second slide label</h5>
 					<p>Some representative placeholder content for the second slide.</p>
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img src="images\monochrome-beauty-product-skincare.jpg" class="d-block w-100" alt="...">
+				<img src="images\Kerfin7-NEA-2185.jpg" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>Third slide label</h5>
 					<p>Some representative placeholder content for the third slide.</p>
